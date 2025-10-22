@@ -6,8 +6,8 @@ extends CharacterBody2D
 func _physics_process(delta: float) -> void:
 	var input_vector = Vector2.ZERO
 	
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector.x = Input.get_axis("ui_left","ui_right")
+	input_vector.y = Input.get_axis("ui_up","ui_down")
 	input_vector = input_vector.normalized()
 	velocity = input_vector * speed
 	move_and_slide()
@@ -27,4 +27,5 @@ func _physics_process(delta: float) -> void:
 			else:
 				anim_sprite.play("walk_up")
 	else:
+		anim_sprite.flip_h = false
 		anim_sprite.play("idle_down")  # 這裡假設角色停止時面向下
