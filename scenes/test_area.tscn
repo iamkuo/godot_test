@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy52em0lkokm3"]
+[gd_scene load_steps=6 format=3 uid="uid://cy52em0lkokm3"]
 
 [ext_resource type="Texture2D" uid="uid://dovy4m80bygyd" path="res://assets/sprites/objects/螢幕擷取畫面 2025-10-16 203137.png" id="1_yldxj"]
+[ext_resource type="Script" uid="uid://8g2o8oh13eqv" path="res://scenes/back_to_world.gd" id="2_f0p7x"]
 
 [sub_resource type="Animation" id="Animation_f0p7x"]
 length = 0.001
@@ -82,3 +83,6 @@ offset_right = 39.0
 offset_bottom = 225.0
 text = "Back
 "
+script = ExtResource("2_f0p7x")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

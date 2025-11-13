@@ -718,13 +718,7 @@ tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_p57ef")
 
 [node name="Player" parent="." instance=ExtResource("7_so2xy")]
+rotation = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(5, 5)
-process_callback = 0
-limit_left = -416
-limit_top = -208
-limit_right = 272
-limit_bottom = 208
-limit_smoothed = true
-position_smoothing_enabled = true
+zoom = Vector2(2, 2)
