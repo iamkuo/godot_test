@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://ypplfbkktob5"]
+
+[ext_resource type="Texture2D" uid="uid://ca1w24r726wp3" path="res://assets/ai_test_stuff/Gemini_Generated_Image_6xsr606xsr606xsr.png" id="1_l6cm7"]
+
+[sub_resource type="Theme" id="Theme_l6cm7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ekxnf"]
+specular_color = Color(0.654902, 0.4392157, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqqt6"]
+texture = SubResource("CanvasTexture_ekxnf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font_size = 40
+font_color = Color(1, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6cm7")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.3
+anchor_right = 0.6
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_l6cm7")
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_bqqt6")
+text = "開始遊戲"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_l6cm7")
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_bqqt6")
+text = "設定"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_l6cm7")
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_bqqt6")
+text = "關於
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_l6cm7")
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_bqqt6")
+text = "離開"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.15
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 29.0
+grow_horizontal = 2
+text = "終"
+label_settings = SubResource("LabelSettings_ekxnf")
