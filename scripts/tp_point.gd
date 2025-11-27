@@ -6,4 +6,4 @@ func _init() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("player detected")
-	SceneManager.switch_scene("test_area")
+	SceneManager.switch_scene("test_area","fade")

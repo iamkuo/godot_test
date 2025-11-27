@@ -1,77 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ypplfbkktob5"]
+[gd_scene load_steps=12 format=3 uid="uid://ypplfbkktob5"]
 
 [ext_resource type="Texture2D" uid="uid://ca1w24r726wp3" path="res://assets/ai_test_stuff/Gemini_Generated_Image_6xsr606xsr606xsr.png" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_ekxnf"]
-[ext_resource type="Script" path="res://scenes/start_button.gd" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://bhw7a21hfnm6a" path="res://scripts/start_button.gd" id="3_bqqt6"]
 
 [sub_resource type="Theme" id="Theme_l6cm7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
-bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
-border_width_left = 4
-border_width_bottom = 5
-border_color = Color(0.1254902, 0.47058824, 0.26666668, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-expand_margin_left = 4.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
-bg_color = Color(0.10980392, 0.3254902, 0.18431373, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
-shadow_size = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
-bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
-border_width_left = 4
-border_width_bottom = 5
-border_color = Color(0.1254902, 0.47058824, 0.26666668, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-expand_margin_left = 4.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
-bg_color = Color(0.10980392, 0.3254902, 0.18431373, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
-shadow_size = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
-bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
-border_width_left = 4
-border_width_bottom = 5
-border_color = Color(0.1254902, 0.47058824, 0.26666668, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_left = 1
-expand_margin_left = 4.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dd4i"]
-bg_color = Color(0.10980392, 0.3254902, 0.18431373, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
-shadow_size = 7
-
-[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
-line_spacing = 5.0
-font_size = 52
-font_color = Color(0.1528835, 0.3804639, 0.2132208, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
 bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
@@ -87,6 +20,18 @@ expand_margin_left = 2.0
 expand_margin_top = 5.0
 shadow_size = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.23938751, 0.33533055, 0.113570295, 1)
+border_width_top = 3
+border_width_right = 3
+border_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
+shadow_size = 7
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
 bg_color = Color(0.11166271, 0.3273868, 0.18274787, 1)
 corner_radius_top_left = 3
@@ -95,6 +40,31 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 shadow_color = Color(0.11013771, 0.24492949, 0.11013452, 0.6)
 shadow_size = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+line_spacing = 5.0
+font_size = 52
+font_color = Color(0.1528835, 0.3804639, 0.2132208, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.23921569, 0.3372549, 0.11372549, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 4.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
+shadow_size = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -122,41 +92,49 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -125.0
-offset_top = 330.0
+offset_top = 288.0
 offset_right = 125.0
-offset_bottom = -92.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="setting" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_l6cm7")
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tbmy8")
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ekxnf")
 text = "設定"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="about" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_l6cm7")
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jk1qb")
-text = "關於
-"
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ekxnf")
+text = "關於"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_l6cm7")
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5dd4i")
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ekxnf")
 text = "離開"
 
 [node name="Label" type="Label" parent="."]
@@ -166,10 +144,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.5
-offset_top = -245.0
-offset_right = 21.5
-offset_bottom = -195.0
+offset_left = -28.0
+offset_top = -216.0
+offset_right = 28.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_ekxnf")
@@ -184,17 +162,20 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -150.0
-offset_top = 245.0
+offset_top = 212.0
 offset_right = 150.0
-offset_bottom = -350.0
+offset_bottom = -278.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_l6cm7")
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_ekxnf")
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "開始遊戲"
 script = ExtResource("3_bqqt6")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
