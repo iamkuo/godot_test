@@ -23,6 +23,7 @@ SceneManager="*res://scripts/scene_manager.gd"
 
 window/size/viewport_width=1024
 window/size/viewport_height=540
+window/stretch/mode="viewport"
 
 [input]
 

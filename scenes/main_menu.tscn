@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ypplfbkktob5"]
+[gd_scene load_steps=13 format=3 uid="uid://ypplfbkktob5"]
 
 [ext_resource type="Texture2D" uid="uid://ca1w24r726wp3" path="res://assets/ai_test_stuff/Gemini_Generated_Image_6xsr606xsr606xsr.png" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_ekxnf"]
 [ext_resource type="Script" uid="uid://bhw7a21hfnm6a" path="res://scripts/start_button.gd" id="3_bqqt6"]
+
+[sub_resource type="Theme" id="Theme_bqqt6"]
 
 [sub_resource type="Theme" id="Theme_l6cm7"]
 
@@ -73,6 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_bqqt6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

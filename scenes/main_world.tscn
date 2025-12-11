@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d3ebkdkq4be2x"]
+[gd_scene load_steps=27 format=4 uid="uid://d3ebkdkq4be2x"]
 
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/sprites/tilesets/grass.png" id="2_sfmdb"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dk13biy1s4ia0" path="res://assets/sprites/objects/objects.png" id="4_c3jn5"]
 [ext_resource type="Texture2D" uid="uid://dy15lydkdb7ym" path="res://assets/sprites/tilesets/fences.png" id="5_syikd"]
 [ext_resource type="PackedScene" uid="uid://hjwobmyip8lh" path="res://scenes/tp_point.tscn" id="6_fatp1"]
+[ext_resource type="PackedScene" uid="uid://bhq1tnsq2yocq" path="res://scenes/sign.tscn" id="7_5irk3"]
 [ext_resource type="PackedScene" uid="uid://dw83txjhdwws0" path="res://scenes/player.tscn" id="7_so2xy"]
+[ext_resource type="Script" uid="uid://bjk6ceubpsfks" path="res://scripts/gui_manager.gd" id="9_bokwj"]
+[ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/sprites/Border and Panels Menu/04 Border 03.png" id="9_oa7qk"]
+[ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="10_bokwj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_wynhp")
@@ -407,6 +411,7 @@ texture = ExtResource("4_c3jn5")
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+5:0/next_alternative_id = 4
 5:0/0 = 0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
@@ -679,14 +684,40 @@ sources/0 = SubResource("TileSetAtlasSource_u5sy4")
 sources/1 = SubResource("TileSetAtlasSource_kvpfn")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vtaks"]
+resource_name = "TpPoints"
 scenes/1/scene = ExtResource("6_fatp1")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wj2hs"]
+resource_name = "Dialogs"
+scenes/1/scene = ExtResource("7_5irk3")
 
 [sub_resource type="TileSet" id="TileSet_p57ef"]
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetScenesCollectionSource_vtaks")
+sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
 
-[node name="Main_world" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avgj4"]
+texture = ExtResource("9_oa7qk")
+texture_margin_left = 45.0
+texture_margin_top = 18.0
+texture_margin_right = 45.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(771, 579, 186, 186)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sr1c3"]
+font = ExtResource("10_bokwj")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_urbfd"]
+font = ExtResource("10_bokwj")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_kdq54"]
+font = ExtResource("10_bokwj")
+font_size = 36
+
+[node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Map" type="Node2D" parent="."]
@@ -709,16 +740,63 @@ tile_set = SubResource("TileSet_u5sy4")
 
 [node name="items" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD5//7/AAAIAAYAAAD5////AAAIAAcAAAD5/wAAAAAIAAgAAAD6//7/AAAJAAYAAAD6////AAAJAAcAAAD6/wAAAAAJAAgAAADy//7/AAAIAAYAAADy////AAAIAAcAAADy/wAAAAAIAAgAAADz//7/AAAJAAYAAADz////AAAJAAcAAADz/wAAAAAJAAgAAAACAP3/AAAIAAYAAAACAP7/AAAIAAcAAAACAP//AAAIAAgAAAADAP3/AAAJAAYAAAADAP7/AAAJAAcAAAADAP//AAAJAAgAAAD8/wAAAAAKAAAAAAD9/wAAAAALAAAAAAD5//n/AAAGAAcAAAD5//r/AAAGAAgAAAD6//n/AAAHAAcAAAD6//r/AAAHAAgAAAD7/wMAAAAKAAcAAAD7/wQAAAAKAAgAAAD8/wMAAAALAAcAAAD8/wQAAAALAAgAAAAFAPr/AAAGAAcAAAAFAPv/AAAGAAgAAAAGAPr/AAAHAAcAAAAGAPv/AAAHAAgAAAAGAAAAAAAAAAAAAAD//wEAAAAAAAUAAAD//wIAAAAAAAYAAAD//wMAAAAAAAcAAAD//wQAAAAAAAgAAAAAAAEAAAABAAUAAAAAAAIAAAABAAYAAAAAAAMAAAABAAcAAAAAAAQAAAABAAgAAAABAAEAAAACAAUAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAABAAQAAAACAAgAAAAFAAQAAAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAD5//7/AAAIAAYAAAD5////AAAIAAcAAAD5/wAAAAAIAAgAAAD6//7/AAAJAAYAAAD6////AAAJAAcAAAD6/wAAAAAJAAgAAADy//7/AAAIAAYAAADy////AAAIAAcAAADy/wAAAAAIAAgAAADz//7/AAAJAAYAAADz////AAAJAAcAAADz/wAAAAAJAAgAAAACAP3/AAAIAAYAAAACAP7/AAAIAAcAAAACAP//AAAIAAgAAAADAP3/AAAJAAYAAAADAP7/AAAJAAcAAAADAP//AAAJAAgAAAD8/wAAAAAKAAAAAAD9/wAAAAALAAAAAAD5//n/AAAGAAcAAAD5//r/AAAGAAgAAAD6//n/AAAHAAcAAAD6//r/AAAHAAgAAAD7/wMAAAAKAAcAAAD7/wQAAAAKAAgAAAD8/wMAAAALAAcAAAD8/wQAAAALAAgAAAAFAPr/AAAGAAcAAAAFAPv/AAAGAAgAAAAGAPr/AAAHAAcAAAAGAPv/AAAHAAgAAAD//wEAAAAAAAUAAAD//wIAAAAAAAYAAAD//wMAAAAAAAcAAAD//wQAAAAAAAgAAAAAAAEAAAABAAUAAAAAAAIAAAABAAYAAAAAAAMAAAABAAcAAAAAAAQAAAABAAgAAAABAAEAAAACAAUAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAABAAQAAAACAAgAAAA=")
 tile_set = SubResource("TileSet_gee14")
 
 [node name="interatctables" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_p57ef")
 
 [node name="Player" parent="." instance=ExtResource("7_so2xy")]
+unique_name_in_owner = true
 rotation = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+limit_enabled = false
+
+[node name="Gui" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_bokwj")
+
+[node name="Dialog" type="Panel" parent="Gui"]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_avgj4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Gui/Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start" type="Label" parent="Gui/Dialog/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "▶"
+label_settings = SubResource("LabelSettings_sr1c3")
+
+[node name="Label" type="Label" parent="Gui/Dialog/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Never gonna give you up never gonna let you down"
+label_settings = SubResource("LabelSettings_urbfd")
+autowrap_mode = 2
+clip_text = true
+
+[node name="Label2" type="Label" parent="Gui/Dialog/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "V"
+label_settings = SubResource("LabelSettings_kdq54")
