@@ -11,7 +11,6 @@ func _ready() -> void:
 		current_scene = scene_container.get_child(0)
 
 func switch_scene(name: String, transition_type: String):
-	print("switching scene")
 	call_deferred("_deferred_switch_scene", name, transition_type)
 
 func _deferred_switch_scene(name: String, transition_type: String):
@@ -24,4 +23,3 @@ func _deferred_switch_scene(name: String, transition_type: String):
 	scene_container.add_child(current_scene)  # 添加到固定容器
 	animation_player.play("%s_out" % transition_type)
 	transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	print("scene switched")

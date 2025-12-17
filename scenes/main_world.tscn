@@ -685,12 +685,14 @@ resource_name = "TpPoints"
 scenes/1/scene = ExtResource("6_fatp1")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wj2hs"]
-resource_name = "Dialogs"
+resource_name = "Signs"
 scenes/1/scene = ExtResource("7_5irk3")
 
 [sub_resource type="TileSet" id="TileSet_p57ef"]
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "Name"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetScenesCollectionSource_vtaks")
 sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
 

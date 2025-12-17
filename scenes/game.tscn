@@ -208,7 +208,7 @@ font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_400sg"]
 font = ExtResource("2_78awf")
-font_size = 36
+font_size = 48
 
 [node name="Game" type="Node2D"]
 
@@ -236,6 +236,7 @@ color = Color(0, 0, 0, 0)
 unique_name_in_owner = true
 
 [node name="Dialog" type="Panel" parent="Gui"]
+visible = false
 anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 1.0
@@ -254,7 +255,7 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="start" type="Label" parent="Gui/Dialog/HBoxContainer"]
+[node name="Start" type="Label" parent="Gui/Dialog/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "▶"
@@ -266,10 +267,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Never gonna give you up never gonna let you down"
 label_settings = SubResource("LabelSettings_kiw3p")
-autowrap_mode = 2
+autowrap_mode = 3
 clip_text = true
 
-[node name="Name" type="Label" parent="Gui/Dialog/HBoxContainer"]
+[node name="End" type="Label" parent="Gui/Dialog/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8

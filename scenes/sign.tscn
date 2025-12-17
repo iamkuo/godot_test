@@ -12,6 +12,7 @@ size = Vector2(16, 16)
 
 [node name="Sign" type="Node2D"]
 script = ExtResource("1_kd50q")
+sign_texts = Array[String](["never gonna give you up", "never gonna let you down"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_kd50q")
@@ -21,4 +22,5 @@ texture = SubResource("AtlasTexture_kd50q")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8yyji")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
