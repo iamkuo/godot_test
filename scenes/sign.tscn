@@ -12,7 +12,6 @@ size = Vector2(16, 16)
 
 [node name="Sign" type="Node2D"]
 script = ExtResource("1_kd50q")
-sign_texts = Array[String](["never gonna give you up", "never gonna let you down"])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_kd50q")
