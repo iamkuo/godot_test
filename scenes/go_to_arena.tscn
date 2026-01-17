@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1v15txqs225"]
 
-[ext_resource type="Script" uid="uid://bdfybhcd4oc5i" path="res://scripts/tp_point.gd" id="1_62nvc"]
+[ext_resource type="Script" uid="uid://bdfybhcd4oc5i" path="res://other_scripts/tp_point.gd" id="1_62nvc"]
 
 [node name="GotoArena" type="Area2D"]
 collision_layer = 8

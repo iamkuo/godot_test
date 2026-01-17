@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://dw83txjhdwws0"]
 
-[ext_resource type="Script" uid="uid://cduh6xpc3w6ah" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://cduh6xpc3w6ah" path="res://important_scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://b24okigodf367" path="res://assets/sprites/characters/goblin.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bhx4ykad1gvfo" path="res://assets/sprites/characters/player.png" id="3_qlg0r"]
 

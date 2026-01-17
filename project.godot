@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scripts/scene_manager.gd"
-GuiManager="*res://scripts/gui_manager.gd"
+SceneSwitcher="*res://important_scripts/scene_switcher.gd"
+GuiManager="*res://important_scripts/gui_manager.gd"
+CutsceneManager="*res://important_scripts/cutscene/cutscene_manager.gd"
 
 [display]
 

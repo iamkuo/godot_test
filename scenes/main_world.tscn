@@ -1,6 +1,5 @@
-[gd_scene load_steps=38 format=4 uid="uid://d3ebkdkq4be2x"]
+[gd_scene load_steps=37 format=4 uid="uid://d3ebkdkq4be2x"]
 
-[ext_resource type="Script" uid="uid://xcdl8xkwrp5u" path="res://scripts/main_menu.gd" id="1_sr1c3"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/sprites/tilesets/grass.png" id="2_sfmdb"]
 [ext_resource type="Texture2D" uid="uid://dtu2mud6hhf86" path="res://assets/sprites/tilesets/decor_8x8.png" id="3_hp7px"]
@@ -13,6 +12,21 @@
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="11_urbfd"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/sprites/objects/owowowwo.png" id="13_liqfm"]
 [ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/sprites/PNG/Icons.png" id="13_sr1c3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avgj4"]
+texture = ExtResource("9_wj2hs")
+region_rect = Rect2(183, 241, 9, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa7qk"]
+content_margin_right = 1.0
+texture = ExtResource("9_wj2hs")
+region_rect = Rect2(10, 0, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj2hs"]
+texture = ExtResource("9_wj2hs")
+texture_margin_left = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wj2hs"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ipoc1"]
 color = Color(0.3137255, 0.7294118, 0.15294118, 1)
@@ -45,20 +59,6 @@ region = Rect2(67, 35, 11, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urbfd"]
 texture = SubResource("AtlasTexture_sr1c3")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bokwj"]
-texture = ExtResource("9_wj2hs")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa7qk"]
-content_margin_right = 1.0
-texture = ExtResource("9_wj2hs")
-region_rect = Rect2(10, 0, 0, 0)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj2hs"]
-texture = ExtResource("9_wj2hs")
-texture_margin_left = 1.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wj2hs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_wynhp")
@@ -749,16 +749,31 @@ sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
 
 [node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_sr1c3")
 
 [node name="Player" parent="." instance=ExtResource("7_so2xy")]
 unique_name_in_owner = true
 rotation = 0.0
 
-[node name="Panel2" type="Panel" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_enabled = false
+
+[node name="pause" type="Button" parent="Player/Camera2D"]
+offset_left = -251.0
+offset_top = -130.0
+offset_right = -235.0
+offset_bottom = -110.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_avgj4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oa7qk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wj2hs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wj2hs")
+
+[node name="Panel2" type="Panel" parent="Player/Camera2D"]
 z_index = 31
 y_sort_enabled = true
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -251.0
@@ -768,7 +783,7 @@ offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="paused" type="Label" parent="Player/Panel2"]
+[node name="paused" type="Label" parent="Player/Camera2D/Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -786,7 +801,7 @@ theme_override_font_sizes/font_size = 20
 text = "game paused"
 horizontal_alignment = 1
 
-[node name="textcontain" type="VBoxContainer" parent="Player/Panel2"]
+[node name="textcontain" type="VBoxContainer" parent="Player/Camera2D/Panel2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.37800002
@@ -801,21 +816,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="sound effect3" type="Label" parent="Player/Panel2/textcontain"]
+[node name="sound effect3" type="Label" parent="Player/Camera2D/Panel2/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_urbfd")
 theme_override_font_sizes/font_size = 13
 text = "sound effect"
 horizontal_alignment = 1
 
-[node name="music2" type="Label" parent="Player/Panel2/textcontain"]
+[node name="music2" type="Label" parent="Player/Camera2D/Panel2/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_urbfd")
 theme_override_font_sizes/font_size = 13
 text = "music"
 horizontal_alignment = 1
 
-[node name="main volume" type="HSlider" parent="Player/Panel2"]
+[node name="main volume" type="HSlider" parent="Player/Camera2D/Panel2"]
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
@@ -830,7 +845,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="CheckButton" type="CheckButton" parent="Player/Panel2"]
+[node name="CheckButton" type="CheckButton" parent="Player/Camera2D/Panel2"]
 z_index = 2
 layout_mode = 0
 offset_left = 127.0
@@ -843,7 +858,7 @@ theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
 text = "Fullscreen/Windowed"
 
-[node name="SNDEFCT" type="HSlider" parent="Player/Panel2"]
+[node name="SNDEFCT" type="HSlider" parent="Player/Camera2D/Panel2"]
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
@@ -865,7 +880,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="music slder" type="HSlider" parent="Player/Panel2"]
+[node name="music slder" type="HSlider" parent="Player/Camera2D/Panel2"]
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
@@ -887,7 +902,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="continue" type="Button" parent="Player/Panel2"]
+[node name="continue" type="Button" parent="Player/Camera2D/Panel2"]
 z_index = 2
 layout_mode = 0
 offset_left = 171.0
@@ -896,7 +911,7 @@ offset_right = 193.0
 offset_bottom = 236.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
 
-[node name="exit" type="Button" parent="Player/Panel2"]
+[node name="exit" type="Button" parent="Player/Camera2D/Panel2"]
 z_index = 2
 layout_mode = 0
 offset_left = 307.0
@@ -905,28 +920,12 @@ offset_right = 334.0
 offset_bottom = 236.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")
 
-[node name="Panel4" type="Panel" parent="Player/Panel2"]
+[node name="Panel4" type="Panel" parent="Player/Camera2D/Panel2"]
 layout_mode = 0
 offset_left = -10.0
 offset_top = -14.0
 offset_right = 522.0
 offset_bottom = 274.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-limit_enabled = false
-
-[node name="pause" type="Button" parent="Player/Camera2D"]
-offset_left = -251.0
-offset_top = -130.0
-offset_right = -235.0
-offset_bottom = -110.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_bokwj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_oa7qk")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wj2hs")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wj2hs")
 
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
