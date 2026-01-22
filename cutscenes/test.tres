@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CutsceneScript" load_steps=3 format=3 uid="uid://6jtqq3umxr7x"]
+
+[ext_resource type="Script" uid="uid://c7505rjkk6rpg" path="res://important_scripts/cutscene/cutscene_script.gd" id="1_p0wu6"]
+[ext_resource type="Script" uid="uid://b2sxig6otw26p" path="res://important_scripts/cutscene/cutscene_step.gd" id="2_06det"]
+
+[resource]
+script = ExtResource("1_p0wu6")
+metadata/_custom_type_script = "uid://c7505rjkk6rpg"

@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 @onready var scene_container = get_node("/root/Game/SceneContainer")
 @onready var animation_player = get_node("/root/Game/GUI/FullscreenUI/AnimationPlayer")
-@onready var transition_rect = get_node("/root/Game/GUI/FullscreenUI/TransitionRect")
+@onready var transition_rect = get_node("/root/Game/GUI/FullscreenUI/ColorRect")
 
 func _ready() -> void: 
 	await get_tree().process_frame

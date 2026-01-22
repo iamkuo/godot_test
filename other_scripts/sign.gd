@@ -6,7 +6,7 @@ var player_in_range : bool = false
 
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("interact"):
-		if GuiManager.current_state == GuiManager.dialog_state.READY:
+		if GuiManager.current_state == GuiManager.output_state.READY:
 			GuiManager.queue_texts(sign_texts)
 
 func _on_body_entered(body: Node2D) -> void:

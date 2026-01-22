@@ -21,5 +21,3 @@ enum StepType {
 
 # ---- Fullscreen ----
 @export var texture: Texture2D
-@export var wait_for_input: bool = true
-@export var time: float = 2.0
