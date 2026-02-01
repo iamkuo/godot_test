@@ -8,12 +8,6 @@ func _ready():
 	$dabuttons.visible = true
 	$Panel.visible = false
 
-
-	
-	
-	
-
-
 func _on_setting_2_pressed():
 	$dabuttons.visible = false
 	$StartButton2.visible = false

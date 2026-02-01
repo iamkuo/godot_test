@@ -4,13 +4,15 @@ extends Node2D
 
 var player_in_range : bool = false
 
-func _process(delta: float) -> void:
-	if player_in_range and Input.is_action_just_pressed("interact"):
-		if GuiManager.current_state == GuiManager.output_state.READY:
+func _process(_delta: float) -> void:
+	if player_in_range and Input.is_action_just_pressed("ui_accept"):
+		print("sign triggered")
+		if GuiManager.current_state == GuiManager.gui_state.READY:
 			GuiManager.queue_texts(sign_texts)
+			player_in_range = false
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	player_in_range = true
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	player_in_range = false

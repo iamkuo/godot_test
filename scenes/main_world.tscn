@@ -1,43 +1,19 @@
-[gd_scene load_steps=42 format=4 uid="uid://d3ebkdkq4be2x"]
+[gd_scene load_steps=39 format=4 uid="uid://dw1mwbbepdoi1"]
 
-[ext_resource type="Script" uid="uid://crfd344k5x778" path="res://important_scripts/mainworld.gd" id="1_sr1c3"]
+[ext_resource type="Script" uid="uid://bvlgb1rm4njx2" path="res://important_scripts/main_world.gd" id="1_urbfd"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/sprites/tilesets/grass.png" id="2_sfmdb"]
 [ext_resource type="Texture2D" uid="uid://dtu2mud6hhf86" path="res://assets/sprites/tilesets/decor_8x8.png" id="3_hp7px"]
+[ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="3_kdq54"]
 [ext_resource type="Texture2D" uid="uid://dk13biy1s4ia0" path="res://assets/sprites/objects/objects.png" id="4_c3jn5"]
 [ext_resource type="Texture2D" uid="uid://dy15lydkdb7ym" path="res://assets/sprites/tilesets/fences.png" id="5_syikd"]
 [ext_resource type="PackedScene" uid="uid://hjwobmyip8lh" path="res://scenes/tp_point.tscn" id="6_fatp1"]
 [ext_resource type="PackedScene" uid="uid://bhq1tnsq2yocq" path="res://scenes/sign.tscn" id="7_5irk3"]
 [ext_resource type="PackedScene" uid="uid://dw83txjhdwws0" path="res://scenes/player.tscn" id="7_so2xy"]
-[ext_resource type="Texture2D" uid="uid://bc5qs0usilydf" path="res://assets/sprites/PNG/Main_menu.png" id="7_urbfd"]
 [ext_resource type="Texture2D" uid="uid://blgt1tijs2mkx" path="res://assets/sprites/PNG/Settings.png" id="9_wj2hs"]
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="11_urbfd"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/sprites/objects/owowowwo.png" id="13_liqfm"]
 [ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/sprites/PNG/Icons.png" id="13_sr1c3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_urbfd"]
-atlas = ExtResource("9_wj2hs")
-region = Rect2(166.06993, 240.21506, 10.119095, 14.669052)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdq54"]
-texture = SubResource("AtlasTexture_urbfd")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8v7ug"]
-atlas = ExtResource("7_urbfd")
-region = Rect2(180.4341, 239.33945, 12.109268, 14.569)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kv278"]
-texture = SubResource("AtlasTexture_8v7ug")
-modulate_color = Color(0.18599582, 0.7616883, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_liqfm"]
-atlas = ExtResource("7_urbfd")
-region = Rect2(181.18547, 239.57898, 11.011917, 14.611008)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8v7ug"]
-texture = SubResource("AtlasTexture_liqfm")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wj2hs"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ipoc1"]
 color = Color(0.3137255, 0.7294118, 0.15294118, 1)
@@ -70,6 +46,21 @@ region = Rect2(67, 35, 11, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urbfd"]
 texture = SubResource("AtlasTexture_sr1c3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avgj4"]
+texture = ExtResource("9_wj2hs")
+region_rect = Rect2(183, 241, 9, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa7qk"]
+content_margin_right = 1.0
+texture = ExtResource("9_wj2hs")
+region_rect = Rect2(10, 0, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj2hs"]
+texture = ExtResource("9_wj2hs")
+texture_margin_left = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wj2hs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_wynhp")
@@ -760,7 +751,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
 
 [node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_sr1c3")
+script = ExtResource("1_urbfd")
 
 [node name="Player" parent="." instance=ExtResource("7_so2xy")]
 unique_name_in_owner = true
@@ -770,70 +761,36 @@ rotation = 0.0
 zoom = Vector2(2, 2)
 limit_enabled = false
 
-[node name="pause" type="Button" parent="Player/Camera2D"]
+[node name="pauseuid" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -251.0
 offset_top = -130.0
-offset_right = -235.0
-offset_bottom = -110.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_kdq54")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kv278")
-theme_override_styles/hover = SubResource("StyleBoxTexture_8v7ug")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wj2hs")
+offset_right = -211.0
+offset_bottom = -90.0
+script = ExtResource("3_kdq54")
 
-[node name="Panel4" type="Panel" parent="Player"]
-offset_left = -261.0
-offset_top = -144.0
-offset_right = 271.0
-offset_bottom = 144.0
-
-[node name="textcontain" type="VBoxContainer" parent="Player/Panel4"]
-z_index = 1
+[node name="Panel2" type="Panel" parent="Player/Camera2D/pauseuid"]
+z_index = 31
+y_sort_enabled = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.000015
-offset_top = 71.0
-offset_right = 79.0
-offset_bottom = 282.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/separation = 30
+grow_vertical = 2
 
-[node name="main volume" type="Label" parent="Player/Panel4/textcontain"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("11_urbfd")
-theme_override_font_sizes/font_size = 13
-text = "main volume"
-horizontal_alignment = 1
-
-[node name="music2" type="Label" parent="Player/Panel4/textcontain"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("11_urbfd")
-theme_override_font_sizes/font_size = 13
-text = "music"
-horizontal_alignment = 1
-
-[node name="sound effect 4" type="Label" parent="Player/Panel4/textcontain"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("11_urbfd")
-theme_override_font_sizes/font_size = 13
-text = "sound effect"
-horizontal_alignment = 1
-
-[node name="paused" type="Label" parent="Player/Panel4"]
-z_index = 1
+[node name="paused" type="Label" parent="Player/Camera2D/pauseuid/Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -109.0
-offset_right = 100.0
-offset_bottom = -78.0
+offset_left = 146.0
+offset_top = 21.0
+offset_right = 356.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_urbfd")
@@ -841,14 +798,43 @@ theme_override_font_sizes/font_size = 20
 text = "game paused"
 horizontal_alignment = 1
 
-[node name="main volume" type="HSlider" parent="Player/Panel4"]
-z_index = 1
+[node name="textcontain" type="VBoxContainer" parent="Player/Camera2D/pauseuid/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37800002
+anchor_top = 0.344
+anchor_right = 0.62200004
+anchor_bottom = 0.785
+offset_left = 174.0
+offset_top = 52.0
+offset_right = 332.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="sound effect3" type="Label" parent="Player/Camera2D/pauseuid/Panel2/textcontain"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_urbfd")
+theme_override_font_sizes/font_size = 13
+text = "sound effect"
+horizontal_alignment = 1
+
+[node name="music2" type="Label" parent="Player/Camera2D/pauseuid/Panel2/textcontain"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_urbfd")
+theme_override_font_sizes/font_size = 13
+text = "music"
+horizontal_alignment = 1
+
+[node name="main volume" type="HSlider" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
-offset_left = 136.0
-offset_top = 88.0
-offset_right = 386.0
-offset_bottom = 101.0
+offset_left = 126.0
+offset_top = 74.0
+offset_right = 376.0
+offset_bottom = 87.0
 theme_override_icons/grabber = ExtResource("13_liqfm")
 theme_override_icons/grabber_highlight = ExtResource("13_liqfm")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -856,22 +842,21 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="CheckButton" type="CheckButton" parent="Player/Panel4"]
-z_index = 1
+[node name="CheckButton" type="CheckButton" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
 layout_mode = 0
-offset_left = 137.0
-offset_top = 202.0
-offset_right = 387.0
-offset_bottom = 228.0
+offset_left = 127.0
+offset_top = 146.0
+offset_right = 377.0
+offset_bottom = 214.0
 theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kkkdg")
 theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
 text = "Fullscreen/Windowed"
 
-[node name="music slder" type="HSlider" parent="Player/Panel4"]
-z_index = 1
-z_as_relative = false
+[node name="SNDEFCT" type="HSlider" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -879,10 +864,10 @@ anchor_left = 0.37800002
 anchor_top = 0.5
 anchor_right = 0.62200004
 anchor_bottom = 0.56100005
-offset_left = -65.09601
-offset_top = 18.0
-offset_right = 55.095978
-offset_bottom = 47.999985
+offset_left = 126.0
+offset_top = 106.0
+offset_right = 376.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_icons/grabber = ExtResource("13_liqfm")
@@ -892,45 +877,63 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="continue" type="Button" parent="Player/Panel4"]
-z_index = 1
+[node name="music slder" type="HSlider" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37800002
+anchor_top = 0.5
+anchor_right = 0.62200004
+anchor_bottom = 0.56100005
+offset_left = 126.00001
+offset_top = 148.0
+offset_right = 376.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("13_liqfm")
+theme_override_icons/grabber_highlight = ExtResource("13_liqfm")
+theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
+value = 50.0
+
+[node name="continue" type="Button" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
 layout_mode = 0
-offset_left = 181.0
-offset_top = 234.0
-offset_right = 203.0
-offset_bottom = 256.0
+offset_left = 171.0
+offset_top = 210.0
+offset_right = 193.0
+offset_bottom = 236.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
 
-[node name="SNDEFCT" type="HSlider" parent="Player/Panel4"]
-z_index = 1
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.37800002
-anchor_top = 0.5
-anchor_right = 0.62200004
-anchor_bottom = 0.56100005
-offset_left = -65.09601
-offset_top = -24.0
-offset_right = 55.095978
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_icons/grabber = ExtResource("13_liqfm")
-theme_override_icons/grabber_highlight = ExtResource("13_liqfm")
-theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
-value = 50.0
-
-[node name="exit" type="Button" parent="Player/Panel4"]
-z_index = 1
+[node name="exit" type="Button" parent="Player/Camera2D/pauseuid/Panel2"]
+z_index = 2
 layout_mode = 0
-offset_left = 317.0
-offset_top = 231.0
-offset_right = 344.0
-offset_bottom = 256.0
+offset_left = 307.0
+offset_top = 210.0
+offset_right = 334.0
+offset_bottom = 236.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")
+
+[node name="Panel4" type="Panel" parent="Player/Camera2D/pauseuid/Panel2"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -14.0
+offset_right = 522.0
+offset_bottom = 274.0
+
+[node name="pause" type="Button" parent="Player/Camera2D/pauseuid"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_avgj4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oa7qk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wj2hs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wj2hs")
 
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -960,4 +963,8 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_p57ef")
 
-[connection signal="pressed" from="Player/Camera2D/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="Player/Camera2D/pauseuid" method="_on_continue_pressed"]
+[connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/exit" to="Player/Camera2D/pauseuid" method="_on_exit_pressed"]
+[connection signal="pressed" from="Player/Camera2D/pauseuid/pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Player/Camera2D/pauseuid/pause" to="Player/Camera2D/pauseuid" method="_on_pause_pressed"]

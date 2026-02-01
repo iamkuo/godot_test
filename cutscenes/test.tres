@@ -1,8 +1,24 @@
-[gd_resource type="Resource" script_class="CutsceneScript" load_steps=3 format=3 uid="uid://6jtqq3umxr7x"]
+[gd_resource type="Resource" script_class="CutsceneScript" load_steps=6 format=3 uid="uid://6jtqq3umxr7x"]
 
 [ext_resource type="Script" uid="uid://c7505rjkk6rpg" path="res://important_scripts/cutscene/cutscene_script.gd" id="1_p0wu6"]
 [ext_resource type="Script" uid="uid://b2sxig6otw26p" path="res://important_scripts/cutscene/cutscene_step.gd" id="2_06det"]
+[ext_resource type="Texture2D" uid="uid://b2uxbmdrt3sj5" path="res://assets/sprites/Border and Panels Menu/01 Border 01.png" id="3_06det"]
+
+[sub_resource type="Resource" id="Resource_p0wu6"]
+script = ExtResource("2_06det")
+type = 2
+speaker = "Rick Astley"
+text = "Never gonna give you up"
+metadata/_custom_type_script = "uid://b2sxig6otw26p"
+
+[sub_resource type="Resource" id="Resource_06det"]
+script = ExtResource("2_06det")
+type = 3
+texture = ExtResource("3_06det")
+metadata/_custom_type_script = "uid://b2sxig6otw26p"
 
 [resource]
 script = ExtResource("1_p0wu6")
+id = "test"
+steps = Array[ExtResource("2_06det")]([SubResource("Resource_p0wu6"), SubResource("Resource_06det")])
 metadata/_custom_type_script = "uid://c7505rjkk6rpg"

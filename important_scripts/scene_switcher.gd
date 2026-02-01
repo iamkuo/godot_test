@@ -4,22 +4,32 @@ var current_scene = null
 @onready var scene_container = get_node("/root/Game/SceneContainer")
 @onready var animation_player = get_node("/root/Game/GUI/FullscreenUI/AnimationPlayer")
 @onready var transition_rect = get_node("/root/Game/GUI/FullscreenUI/ColorRect")
+@onready var fullscreen_ui = get_node("/root/Game/GUI/FullscreenUI")
 
 func _ready() -> void: 
 	await get_tree().process_frame
 	if scene_container.get_child_count() > 0:
 		current_scene = scene_container.get_child(0)
 
-func switch_scene(name: String, transition_type: String):
-	call_deferred("_deferred_switch_scene", name, transition_type)
+func switch_scene(scene_name: String, transition_type: String):
+	call_deferred("_deferred_switch_scene", scene_name, transition_type)
 
-func _deferred_switch_scene(name: String, transition_type: String):
+func _deferred_switch_scene(scene_name: String, transition_type: String):
+	print("switching scene")
 	transition_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	# Ensure the FullscreenUI and ColorRect are visible before starting animation
+	fullscreen_ui.show()
+	transition_rect.color = Color(0, 0, 0, 0)
+	transition_rect.show()
 	animation_player.play("%s_in" % transition_type)
 	await animation_player.animation_finished
 	current_scene.queue_free()
-	var new_scene = load("res://scenes/%s.tscn" % name)
+	var new_scene = load("res://scenes/%s.tscn" % scene_name)
 	current_scene = new_scene.instantiate()
 	scene_container.add_child(current_scene)  # 添加到固定容器
 	animation_player.play("%s_out" % transition_type)
+	await animation_player.animation_finished
+	print("scene switched")
 	transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Hide the FullscreenUI after transition completes
+	fullscreen_ui.hide()
