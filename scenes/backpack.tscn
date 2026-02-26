@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://d24suq71w264f"]
+
+[ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/sprites/Border and Panels Menu/04 Border 03.png" id="1_q7lps"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gcru"]
+texture = ExtResource("1_q7lps")
+texture_margin_left = 45.0
+texture_margin_top = 45.0
+texture_margin_right = 45.0
+texture_margin_bottom = 45.0
+region_rect = Rect2(387, 387, 186, 186)
+
+[node name="Backpack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5gcru")
