@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://dw1mwbbepdoi1"]
+[gd_scene load_steps=36 format=4 uid="uid://dw1mwbbepdoi1"]
 
 [ext_resource type="Script" uid="uid://bvlgb1rm4njx2" path="res://important_scripts/main_world.gd" id="1_urbfd"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="11_urbfd"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/sprites/objects/owowowwo.png" id="13_liqfm"]
 [ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/sprites/PNG/Icons.png" id="13_sr1c3"]
+[ext_resource type="PackedScene" uid="uid://3m0i8x4jbjf8" path="res://scenes/cutscene.tscn" id="14_urbfd"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ipoc1"]
 color = Color(0.3137255, 0.7294118, 0.15294118, 1)
@@ -945,8 +946,11 @@ tile_set = SubResource("TileSet_gee14")
 [node name="interactables" type="Node2D" parent="Map"]
 
 [node name="Sign" parent="Map/interactables" instance=ExtResource("7_5irk3")]
-position = Vector2(104, 24)
+position = Vector2(120, -40)
 sign_texts = Array[String](["Never gonna give you up", "Never gonna let you down"])
+
+[node name="Cutscene" parent="Map/interactables" instance=ExtResource("14_urbfd")]
+position = Vector2(152, 56)
 
 [connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="Player/Camera2D/pauseuid" method="_on_continue_pressed"]
