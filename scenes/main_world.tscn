@@ -1,13 +1,12 @@
-[gd_scene load_steps=39 format=4 uid="uid://dw1mwbbepdoi1"]
+[gd_scene load_steps=35 format=4 uid="uid://dw1mwbbepdoi1"]
 
 [ext_resource type="Script" uid="uid://bvlgb1rm4njx2" path="res://important_scripts/main_world.gd" id="1_urbfd"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/sprites/tilesets/grass.png" id="2_sfmdb"]
 [ext_resource type="Texture2D" uid="uid://dtu2mud6hhf86" path="res://assets/sprites/tilesets/decor_8x8.png" id="3_hp7px"]
-[ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="3_kdq54"]
+[ext_resource type="Script" path="res://other_scripts/pauseuid.gd" id="3_kdq54"]
 [ext_resource type="Texture2D" uid="uid://dk13biy1s4ia0" path="res://assets/sprites/objects/objects.png" id="4_c3jn5"]
 [ext_resource type="Texture2D" uid="uid://dy15lydkdb7ym" path="res://assets/sprites/tilesets/fences.png" id="5_syikd"]
-[ext_resource type="PackedScene" uid="uid://hjwobmyip8lh" path="res://scenes/tp_point.tscn" id="6_fatp1"]
 [ext_resource type="PackedScene" uid="uid://bhq1tnsq2yocq" path="res://scenes/sign.tscn" id="7_5irk3"]
 [ext_resource type="PackedScene" uid="uid://dw83txjhdwws0" path="res://scenes/player.tscn" id="7_so2xy"]
 [ext_resource type="Texture2D" uid="uid://blgt1tijs2mkx" path="res://assets/sprites/PNG/Settings.png" id="9_wj2hs"]
@@ -733,22 +732,6 @@ physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_u5sy4")
 sources/1 = SubResource("TileSetAtlasSource_kvpfn")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vtaks"]
-resource_name = "TpPoints"
-scenes/1/scene = ExtResource("6_fatp1")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wj2hs"]
-resource_name = "Signs"
-scenes/1/scene = ExtResource("7_5irk3")
-
-[sub_resource type="TileSet" id="TileSet_p57ef"]
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 0
-custom_data_layer_0/name = "Name"
-custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetScenesCollectionSource_vtaks")
-sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
-
 [node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_urbfd")
@@ -762,6 +745,7 @@ zoom = Vector2(2, 2)
 limit_enabled = false
 
 [node name="pauseuid" type="Control" parent="Player/Camera2D"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -251.0
@@ -958,10 +942,11 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD5//7/AAAIAAYAAAD5////AAAIAAcAAAD5/wAAAAAIAAgAAAD6//7/AAAJAAYAAAD6////AAAJAAcAAAD6/wAAAAAJAAgAAADy//7/AAAIAAYAAADy////AAAIAAcAAADy/wAAAAAIAAgAAADz//7/AAAJAAYAAADz////AAAJAAcAAADz/wAAAAAJAAgAAAACAP3/AAAIAAYAAAACAP7/AAAIAAcAAAACAP//AAAIAAgAAAADAP3/AAAJAAYAAAADAP7/AAAJAAcAAAADAP//AAAJAAgAAAD8/wAAAAAKAAAAAAD9/wAAAAALAAAAAAD5//n/AAAGAAcAAAD5//r/AAAGAAgAAAD6//n/AAAHAAcAAAD6//r/AAAHAAgAAAD7/wMAAAAKAAcAAAD7/wQAAAAKAAgAAAD8/wMAAAALAAcAAAD8/wQAAAALAAgAAAAFAPr/AAAGAAcAAAAFAPv/AAAGAAgAAAAGAPr/AAAHAAcAAAAGAPv/AAAHAAgAAAD//wEAAAAAAAUAAAD//wIAAAAAAAYAAAD//wMAAAAAAAcAAAD//wQAAAAAAAgAAAAAAAEAAAABAAUAAAAAAAIAAAABAAYAAAAAAAMAAAABAAcAAAAAAAQAAAABAAgAAAABAAEAAAACAAUAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAABAAQAAAACAAgAAAA=")
 tile_set = SubResource("TileSet_gee14")
 
-[node name="interatctables" type="TileMapLayer" parent="Map"]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
-tile_set = SubResource("TileSet_p57ef")
+[node name="interactables" type="Node2D" parent="Map"]
+
+[node name="Sign" parent="Map/interactables" instance=ExtResource("7_5irk3")]
+position = Vector2(104, 24)
+sign_texts = Array[String](["Never gonna give you up", "Never gonna let you down"])
 
 [connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Player/Camera2D/pauseuid/Panel2/continue" to="Player/Camera2D/pauseuid" method="_on_continue_pressed"]
