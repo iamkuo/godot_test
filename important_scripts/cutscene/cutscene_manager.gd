@@ -47,10 +47,9 @@ func play(id: String) -> void:
 		match step.type:
 			CutsceneStep.StepType.DIALOG:
 				# Display dialog
-				var display_text = step.text
-				if step.speaker != "":
-					display_text = "%s: %s" % [step.speaker, step.text]
+				var display_text = "%s: %s" % [step.speaker, step.text]
 				GuiManager.queue_text(display_text)
+				await get_tree().process_frame
 				await GuiManager.dialog_finished
 
 			CutsceneStep.StepType.MOVE:
@@ -62,9 +61,7 @@ func play(id: String) -> void:
 
 			CutsceneStep.StepType.FULLSCREEN_TEXT:
 				# Show fullscreen text
-				var display_text = step.text
-				if step.speaker != "":
-					display_text = "%s: %s" % [step.speaker, step.text]
+				var display_text = "%s: %s" % [step.speaker, step.text]
 				GuiManager.queue_fullscreen_text(display_text)
 				await GuiManager.fullscreen_finished
 

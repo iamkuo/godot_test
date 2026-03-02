@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d24suq71w264f"]
+[gd_scene load_steps=15 format=3 uid="uid://d24suq71w264f"]
 
 [ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/sprites/Border and Panels Menu/04 Border 03.png" id="1_q7lps"]
+[ext_resource type="Texture2D" uid="uid://c38b4c4d7lcsh" path="res://assets/ai_test_stuff/Gemini_Generated_Image_nf624bnf624bnf62.png" id="2_460lo"]
+[ext_resource type="Texture2D" uid="uid://fdax71bvpiu5" path="res://assets/sprites/objects/torches.png" id="3_8usr3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gcru"]
 texture = ExtResource("1_q7lps")
@@ -10,6 +12,83 @@ texture_margin_right = 45.0
 texture_margin_bottom = 45.0
 region_rect = Rect2(387, 387, 186, 186)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fytde"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(0, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yov5u"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(64, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owf8y"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(128, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45c70"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(192, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujist"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(256, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x37ci"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(320, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4u6l"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(384, 133, 58, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ql0"]
+atlas = ExtResource("3_8usr3")
+region = Rect2(448, 133, 58, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn8c8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fytde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yov5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owf8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45c70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujist")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x37ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4u6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ql0")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcox6"]
+texture = ExtResource("1_q7lps")
+texture_margin_left = 27.0
+texture_margin_top = 27.0
+texture_margin_right = 27.0
+texture_margin_bottom = 27.0
+region_rect = Rect2(195, 579, 186, 186)
+
 [node name="Backpack" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -18,7 +97,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,13 +117,50 @@ offset_right = -50.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="人物與技能" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/人物與技能"]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="TabContainer/人物與技能/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_460lo")
+expand_mode = 2
+
+[node name="SkillGrid" type="GridContainer" parent="TabContainer/人物與技能/HBoxContainer"]
+layout_mode = 2
+
+[node name="Skill" type="TextureButton" parent="TabContainer/人物與技能/HBoxContainer/SkillGrid"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TabContainer/人物與技能/HBoxContainer/SkillGrid/Skill"]
+sprite_frames = SubResource("SpriteFrames_xn8c8")
+animation = &"new_animation"
+
 [node name="永恆之焰的記憶" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/永恆之焰的記憶"]
+layout_mode = 2
+horizontal_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/永恆之焰的記憶/ScrollContainer"]
+layout_mode = 2
+
+[node name="SkillDetailPopup" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qcox6")

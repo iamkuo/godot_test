@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dw1mwbbepdoi1"]
+[gd_scene load_steps=24 format=4 uid="uid://dw1mwbbepdoi1"]
 
 [ext_resource type="Script" uid="uid://bvlgb1rm4njx2" path="res://important_scripts/main_world.gd" id="1_urbfd"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/sprites/tilesets/plains.png" id="1_wynhp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://hjwobmyip8lh" path="res://scenes/tp_point.tscn" id="6_fatp1"]
 [ext_resource type="PackedScene" uid="uid://bhq1tnsq2yocq" path="res://scenes/sign.tscn" id="7_5irk3"]
 [ext_resource type="PackedScene" uid="uid://dw83txjhdwws0" path="res://scenes/player.tscn" id="7_so2xy"]
+[ext_resource type="PackedScene" uid="uid://3m0i8x4jbjf8" path="res://scenes/cutscene.tscn" id="12_avgj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_wynhp")
@@ -720,9 +721,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Pause" parent="Player/Camera2D/Gui" instance=ExtResource("3_bokwj")]
+visible = false
 layout_mode = 0
 
 [node name="Backpack" parent="Player/Camera2D/Gui" instance=ExtResource("4_avgj4")]
+visible = false
 layout_mode = 1
 
 [node name="Map" type="Node2D" parent="."]
@@ -752,3 +755,11 @@ tile_set = SubResource("TileSet_gee14")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_p57ef")
+
+[node name="Cutscene" parent="." instance=ExtResource("12_avgj4")]
+position = Vector2(184, 56)
+script_id = "test"
+
+[node name="Sign" parent="." instance=ExtResource("7_5irk3")]
+position = Vector2(8, 104)
+sign_texts = Array[String](["test test test"])
