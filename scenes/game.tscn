@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://ce8g08ght4lv5"]
 
 [ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/sprites/Border and Panels Menu/04 Border 03.png" id="1_cpr0p"]
-[ext_resource type="PackedScene" uid="uid://ypplfbkktob5" path="res://scenes/main_menu.tscn" id="1_ibkli"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_78awf"]
+[ext_resource type="PackedScene" uid="uid://ypplfbkktob5" path="res://scenes/main_menu.tscn" id="3_cpr0p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0nni"]
 texture = ExtResource("1_cpr0p")
@@ -305,7 +305,7 @@ vertical_alignment = 1
 
 [node name="SceneContainer" type="Node" parent="."]
 
-[node name="MainMenu" parent="SceneContainer" instance=ExtResource("1_ibkli")]
+[node name="MainMenu" parent="SceneContainer" instance=ExtResource("3_cpr0p")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

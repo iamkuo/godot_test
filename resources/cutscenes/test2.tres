@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CutsceneScript" load_steps=7 format=3 uid="uid://cds33dbpq1j7a"]
 
-[ext_resource type="Script" uid="uid://c7505rjkk6rpg" path="res://important_scripts/cutscene/cutscene_script.gd" id="1_ehrc4"]
-[ext_resource type="Script" uid="uid://b2sxig6otw26p" path="res://important_scripts/cutscene/cutscene_step.gd" id="2_lqh3f"]
+[ext_resource type="Script" uid="uid://c7505rjkk6rpg" path="res://resources/data_structures/cutscene_script.gd" id="1_ehrc4"]
+[ext_resource type="Script" uid="uid://b2sxig6otw26p" path="res://resources/data_structures/cutscene_step.gd" id="2_lqh3f"]
 [ext_resource type="Texture2D" uid="uid://dnvrguisldphr" path="res://assets/sprites/PNG/Shop.png" id="3_lqh3f"]
 
 [sub_resource type="Resource" id="Resource_j3v46"]

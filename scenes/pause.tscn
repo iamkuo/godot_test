@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpog3fskyl4m7"]
+[gd_scene load_steps=16 format=3 uid="uid://cpog3fskyl4m7"]
 
 [ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="1_jn4bt"]
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="2_r1fnm"]
@@ -30,6 +30,8 @@ region = Rect2(36, 35, 9, 11)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liqfm"]
 texture = SubResource("AtlasTexture_kdq54")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aicil"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sr1c3"]
 atlas = ExtResource("4_cml1b")
 region = Rect2(67, 35, 11, 11)
@@ -37,11 +39,15 @@ region = Rect2(67, 35, 11, 11)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urbfd"]
 texture = SubResource("AtlasTexture_sr1c3")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jn4bt"]
+
 [node name="Pause" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 193.0
+offset_top = 74.0
+offset_right = 233.0
+offset_bottom = 114.0
 script = ExtResource("1_jn4bt")
 
 [node name="background" type="Panel" parent="."]
@@ -51,6 +57,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 307.0
+offset_top = 161.0
+offset_right = 299.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -61,14 +71,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 144.0
-offset_top = -2.0
-offset_right = 354.0
-offset_bottom = 29.0
+offset_left = 86.0
+offset_top = -4.0
+offset_right = 296.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "game paused"
 horizontal_alignment = 1
 
@@ -79,55 +89,56 @@ anchor_left = 0.37800002
 anchor_top = 0.344
 anchor_right = 0.62200004
 anchor_bottom = 0.785
-offset_left = 168.88
-offset_top = 50.239998
-offset_right = 326.88
-offset_bottom = 239.0
+offset_left = 110.88
+offset_top = 37.239998
+offset_right = 268.88
+offset_bottom = 146.6
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 38
+theme_override_constants/separation = 26
 
 [node name="sound effect3" type="Label" parent="background/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 10
 text = "main volume"
 horizontal_alignment = 1
 
 [node name="music2" type="Label" parent="background/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 10
 text = "music"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="background/textcontain"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r1fnm")
+theme_override_font_sizes/font_size = 10
 text = "sound effect"
 horizontal_alignment = 1
 
 [node name="Panel4" type="Panel" parent="background"]
-z_index = -2
 z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 2.9
-anchor_top = 0.5
-anchor_right = 10.675
-anchor_bottom = 6.1000004
-offset_left = -117.0
-offset_top = -59.0
-offset_right = 152.0
-offset_bottom = 55.999985
+anchor_left = -2.125
+anchor_top = -1.7
+anchor_right = 16.375
+anchor_bottom = 9.525001
+offset_left = -345.0
+offset_top = -230.7
+offset_right = 237.0
+offset_bottom = 240.775
 
 [node name="main volume" type="HSlider" parent="background"]
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
-offset_left = 142.0
-offset_top = 85.0
-offset_right = 392.0
-offset_bottom = 106.0
+offset_left = 81.0
+offset_top = 58.0
+offset_right = 331.0
+offset_bottom = 86.0
 theme_override_icons/grabber = ExtResource("3_wen6a")
 theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -139,10 +150,10 @@ value = 50.0
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
-offset_left = 142.0
-offset_top = 131.0
-offset_right = 392.0
-offset_bottom = 153.0
+offset_left = 81.0
+offset_top = 85.0
+offset_right = 331.0
+offset_bottom = 131.0
 theme_override_icons/grabber = ExtResource("3_wen6a")
 theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -154,10 +165,10 @@ value = 50.0
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
-offset_left = 142.0
-offset_top = 191.0
-offset_right = 392.0
-offset_bottom = 202.0
+offset_left = 81.0
+offset_top = 117.0
+offset_right = 331.0
+offset_bottom = 167.0
 theme_override_icons/grabber = ExtResource("3_wen6a")
 theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -168,11 +179,11 @@ value = 50.0
 [node name="CheckButton" type="CheckButton" parent="background"]
 z_index = 2
 layout_mode = 0
-offset_left = 140.0
-offset_top = 187.0
-offset_right = 390.0
-offset_bottom = 255.0
-theme_override_font_sizes/font_size = 13
+offset_left = 82.0
+offset_top = 153.0
+offset_right = 332.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 11
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kkkdg")
 theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
@@ -181,20 +192,22 @@ text = "Fullscreen/Windowed"
 [node name="continue" type="Button" parent="background"]
 z_index = 2
 layout_mode = 0
-offset_left = 178.0
-offset_top = 245.0
-offset_right = 200.0
-offset_bottom = 271.0
+offset_left = 131.0
+offset_top = 186.0
+offset_right = 153.0
+offset_bottom = 210.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aicil")
 
 [node name="exit" type="Button" parent="background"]
 z_index = 2
 layout_mode = 0
-offset_left = 318.0
-offset_top = 243.0
-offset_right = 345.0
-offset_bottom = 269.0
+offset_left = 262.0
+offset_top = 186.0
+offset_right = 289.0
+offset_bottom = 212.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jn4bt")
 
 [connection signal="pressed" from="background/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="background/exit" to="." method="_on_exit_pressed"]

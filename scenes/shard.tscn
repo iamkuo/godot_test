@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://wlq4biqy0aoq"]
+
+[ext_resource type="Texture2D" uid="uid://vgrqy8ta8w65" path="res://assets/sprites/objects/shard.png" id="1_pmddc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ayr"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua2y8"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr22o"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncd80"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuq6x"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl2g3"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(320, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eppf2"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(384, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5ig6"]
+atlas = ExtResource("1_pmddc")
+region = Rect2(448, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xn8c8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0ayr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua2y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr22o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncd80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuq6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl2g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eppf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5ig6")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[node name="torch" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xn8c8")
+animation = &"new_animation"
+frame = 7
+frame_progress = 0.011041563

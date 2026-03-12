@@ -7,7 +7,7 @@ var _script_map := {}
 func _ready() -> void:
 	# Load all .tres files from cutscenes directory
 	# Load cutscene files from directory
-	var dir = DirAccess.open("res://cutscenes/")
+	var dir = DirAccess.open("res://resources/cutscenes/")
 	if not dir:
 		push_error("Failed to open cutscenes directory")
 		return
@@ -46,26 +46,13 @@ func play(id: String) -> void:
 		# Run each step based on type
 		match step.type:
 			CutsceneStep.StepType.DIALOG:
-				# Display dialog
-				var display_text = "%s: %s" % [step.speaker, step.text]
-				GuiManager.queue_text(display_text)
-				await get_tree().process_frame
-				await GuiManager.dialog_finished
-
-			CutsceneStep.StepType.MOVE:
-				# Move actor
-				var actor := get_node(step.actor_path) as Node2D	
-				var tween := create_tween()
-				tween.tween_property(actor, "global_position", step.target_position, step.duration)
-				await tween.finished
+				GuiManager.queue_text("%s: %s" % [step.speaker, step.text])
+				await GuiManager.dialog_finished # 等待 GUI 宣告播放完畢
 
 			CutsceneStep.StepType.FULLSCREEN_TEXT:
-				# Show fullscreen text
-				var display_text = "%s: %s" % [step.speaker, step.text]
-				GuiManager.queue_fullscreen_text(display_text)
+				GuiManager.queue_fullscreen({ "type": "text", "text": step.text })
 				await GuiManager.fullscreen_finished
 
 			CutsceneStep.StepType.FULLSCREEN_IMAGE:
-				# Show fullscreen image
-				GuiManager.queue_fullscreen_image(step.texture)
+				GuiManager.queue_fullscreen({ "type": "image", "texture": step.texture })
 				await GuiManager.fullscreen_finished
