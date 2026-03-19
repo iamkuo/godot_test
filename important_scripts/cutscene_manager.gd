@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	while file_name != "":
 		if file_name.ends_with(".tres"):
-			var full_path = "res://cutscenes/" + file_name
+			var full_path = "res:///resources/cutscenes/" + file_name
 			var cutscene_script = load(full_path) as CutsceneScript
 			if cutscene_script:
 				scripts.append(cutscene_script)

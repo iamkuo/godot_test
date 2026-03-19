@@ -740,16 +740,22 @@ tile_set = SubResource("TileSet_gee14")
 [node name="interatctables" type="TileMapLayer" parent="Map"]
 z_index = -1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_p57ef")
 
-[node name="Cutscene" parent="." instance=ExtResource("12_avgj4")]
-position = Vector2(184, 56)
+[node name="Cutscenes" type="Node2D" parent="Map"]
+
+[node name="test" parent="Map/Cutscenes" instance=ExtResource("12_avgj4")]
+position = Vector2(136, 40)
 script_id = "test"
 
-[node name="Sign" parent="." instance=ExtResource("7_5irk3")]
-position = Vector2(8, 104)
+[node name="Signs" type="Node2D" parent="Map"]
+
+[node name="test" parent="Map/Signs" instance=ExtResource("7_5irk3")]
+position = Vector2(8, 120)
 sign_texts = Array[String](["test test test"])
+
+[node name="Shards" type="Node2D" parent="Map"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -781,3 +787,5 @@ offset_bottom = 40.0
 [node name="Backpack" parent="CanvasLayer/Gui" instance=ExtResource("4_avgj4")]
 visible = false
 layout_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

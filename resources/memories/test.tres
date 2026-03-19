@@ -5,3 +5,7 @@
 [resource]
 script = ExtResource("1_tr5iv")
 metadata/_custom_type_script = "uid://cfdxuil23cl5k"
+id = ""
+name = ""
+description = ""
+cutscene_id = ""

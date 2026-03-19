@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://wlq4biqy0aoq"]
+[gd_scene load_steps=12 format=3 uid="uid://wlq4biqy0aoq"]
 
 [ext_resource type="Texture2D" uid="uid://vgrqy8ta8w65" path="res://assets/sprites/objects/shard.png" id="1_pmddc"]
+[ext_resource type="Script" uid="uid://bx8xhlw76s85h" path="res://other_scripts/memory_shard.gd" id="1_x0ayr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0ayr"]
 atlas = ExtResource("1_pmddc")
@@ -71,12 +72,13 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="torch" type="TextureButton"]
+[node name="shard" type="TextureButton"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x0ayr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xn8c8")
