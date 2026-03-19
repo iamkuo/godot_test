@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxdfee0kmx0gb"]
+[gd_scene load_steps=5 format=3 uid="uid://dxdfee0kmx0gb"]
 
 [ext_resource type="Texture2D" uid="uid://fdax71bvpiu5" path="res://assets/sprites/objects/torches.png" id="1_d4v33"]
+[ext_resource type="Script" uid="uid://dwpylmuartppr" path="res://other_scripts/torch_button.gd" id="2_kxc6u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjrvc"]
 atlas = ExtResource("1_d4v33")
@@ -8,10 +9,12 @@ region = Rect2(27, 34, 6, 20)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1r1x"]
 
-[node name="Torch" type="TextureRect"]
+[node name="Torch" type="Button"]
 custom_minimum_size = Vector2(100, 100)
-texture = SubResource("AtlasTexture_wjrvc")
-stretch_mode = 5
+icon = SubResource("AtlasTexture_wjrvc")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_kxc6u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

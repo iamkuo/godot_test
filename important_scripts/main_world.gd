@@ -1,6 +1,6 @@
 extends Node2D
 var paused = false
-@onready var pause_menu = $Player/Camera2D/Gui/Pause
+@onready var pause_menu = $CanvasLayer/Gui/Pause
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

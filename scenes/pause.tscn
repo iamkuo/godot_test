@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpog3fskyl4m7"]
+[gd_scene load_steps=20 format=3 uid="uid://cpog3fskyl4m7"]
 
 [ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="1_jn4bt"]
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="2_r1fnm"]
@@ -30,13 +30,25 @@ region = Rect2(36, 35, 9, 11)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_liqfm"]
 texture = SubResource("AtlasTexture_kdq54")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aicil"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aicil"]
+texture = SubResource("AtlasTexture_kdq54")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jn4bt"]
+texture = SubResource("AtlasTexture_kdq54")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1fnm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sr1c3"]
 atlas = ExtResource("4_cml1b")
 region = Rect2(67, 35, 11, 11)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urbfd"]
+texture = SubResource("AtlasTexture_sr1c3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wen6a"]
+texture = SubResource("AtlasTexture_sr1c3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cml1b"]
 texture = SubResource("AtlasTexture_sr1c3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jn4bt"]
@@ -72,13 +84,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 86.0
-offset_top = -4.0
+offset_top = -40.5
 offset_right = 296.0
-offset_bottom = 27.0
+offset_bottom = -10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "game paused"
 horizontal_alignment = 1
 
@@ -90,31 +102,31 @@ anchor_top = 0.344
 anchor_right = 0.62200004
 anchor_bottom = 0.785
 offset_left = 110.88
-offset_top = 37.239998
+offset_top = 8.023995
 offset_right = 268.88
 offset_bottom = 146.6
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 26
+theme_override_constants/separation = 40
 
 [node name="sound effect3" type="Label" parent="background/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 text = "main volume"
 horizontal_alignment = 1
 
 [node name="music2" type="Label" parent="background/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 text = "music"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="background/textcontain"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 text = "sound effect"
 horizontal_alignment = 1
 
@@ -126,49 +138,19 @@ anchor_left = -2.125
 anchor_top = -1.7
 anchor_right = 16.375
 anchor_bottom = 9.525001
-offset_left = -345.0
-offset_top = -230.7
-offset_right = 237.0
-offset_bottom = 240.775
+offset_left = -743.0
+offset_top = -195.7
+offset_right = 426.0
+offset_bottom = 275.775
 
 [node name="main volume" type="HSlider" parent="background"]
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
-offset_left = 81.0
-offset_top = 58.0
-offset_right = 331.0
-offset_bottom = 86.0
-theme_override_icons/grabber = ExtResource("3_wen6a")
-theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
-theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
-value = 50.0
-
-[node name="main volume3" type="HSlider" parent="background"]
-z_index = 2
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 81.0
-offset_top = 85.0
-offset_right = 331.0
-offset_bottom = 131.0
-theme_override_icons/grabber = ExtResource("3_wen6a")
-theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
-theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
-value = 50.0
-
-[node name="main volume2" type="HSlider" parent="background"]
-z_index = 2
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 81.0
-offset_top = 117.0
-offset_right = 331.0
-offset_bottom = 167.0
+offset_left = 25.0
+offset_top = 44.0
+offset_right = 389.0
+offset_bottom = 66.0
 theme_override_icons/grabber = ExtResource("3_wen6a")
 theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -180,10 +162,10 @@ value = 50.0
 z_index = 2
 layout_mode = 0
 offset_left = 82.0
-offset_top = 153.0
+offset_top = 180.0
 offset_right = 332.0
-offset_bottom = 179.0
-theme_override_font_sizes/font_size = 11
+offset_bottom = 204.0
+theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kkkdg")
 theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
@@ -192,22 +174,56 @@ text = "Fullscreen/Windowed"
 [node name="continue" type="Button" parent="background"]
 z_index = 2
 layout_mode = 0
-offset_left = 131.0
-offset_top = 186.0
+offset_left = 124.0
+offset_top = 222.0
 offset_right = 153.0
-offset_bottom = 210.0
+offset_bottom = 249.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_aicil")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aicil")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r1fnm")
 
 [node name="exit" type="Button" parent="background"]
 z_index = 2
 layout_mode = 0
-offset_left = 262.0
-offset_top = 186.0
-offset_right = 289.0
-offset_bottom = 212.0
+offset_left = 263.0
+offset_top = 222.0
+offset_right = 292.0
+offset_bottom = 249.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wen6a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cml1b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jn4bt")
+
+[node name="music" type="HSlider" parent="background"]
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 94.0
+offset_right = 389.0
+offset_bottom = 121.0
+theme_override_icons/grabber = ExtResource("3_wen6a")
+theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
+theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
+value = 50.0
+
+[node name="sound effect" type="HSlider" parent="background"]
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 145.0
+offset_right = 389.0
+offset_bottom = 172.0
+theme_override_icons/grabber = ExtResource("3_wen6a")
+theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
+theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
+value = 50.0
 
 [connection signal="pressed" from="background/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="background/exit" to="." method="_on_exit_pressed"]
