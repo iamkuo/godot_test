@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MemoryOrder" load_steps=2 format=3 uid="uid://memory_order_resource_id"]
+
+[ext_resource type="Script" uid="uid://memory_order_script_uid" path="res://resources/data_structures/memory_order.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+ordered_memory_ids = ["mem_stage_start", "mem_tutorial_guidance"]

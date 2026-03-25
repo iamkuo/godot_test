@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy52em0lkokm3"]
+[gd_scene load_steps=7 format=3 uid="uid://cy52em0lkokm3"]
 
 [ext_resource type="Texture2D" uid="uid://dovy4m80bygyd" path="res://assets/sprites/objects/螢幕擷取畫面 2025-10-16 203137.png" id="1_yldxj"]
 [ext_resource type="Script" uid="uid://8g2o8oh13eqv" path="res://other_scripts/back_to_world.gd" id="2_f0p7x"]
@@ -61,6 +61,8 @@ _data = {
 &"wiggle": SubResource("Animation_vtm10")
 }
 
+[sub_resource type="Theme" id="Theme_f0p7x"]
+
 [node name="test_area" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -77,12 +79,12 @@ libraries = {
 autoplay = "wiggle"
 
 [node name="Button" type="Button" parent="."]
-offset_left = -46.0
-offset_top = 194.0
-offset_right = 39.0
-offset_bottom = 225.0
-text = "Back
-"
+offset_left = -41.0
+offset_top = 136.0
+offset_right = 252.0
+offset_bottom = 248.0
+theme = SubResource("Theme_f0p7x")
+text = "Back"
 script = ExtResource("2_f0p7x")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

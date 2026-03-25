@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryData" load_steps=3 format=3 uid="uid://mem_tutorial_guidance"]
+
+[ext_resource type="Script" uid="uid://cfdxuil23cl5k" path="res://resources/data_structures/memory_data.gd" id="1_memory_data"]
+
+[sub_resource type="Resource" id="Resource_placeholder_icon_2"]
+texture = null
+
+[resource]
+script = ExtResource("1_memory_data")
+id = "mem_tutorial_guidance"
+name = "Echoes of Guidance"
+description = "Recollection of the initial lessons learned."
+cutscene_id = "tutorial_stage_2"
+icon = SubResource("Resource_placeholder_icon_2")

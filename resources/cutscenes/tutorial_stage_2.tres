@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CutsceneScript" load_steps=5 format=3 uid="uid://dta0qbm6vmtlq"]
+
+[ext_resource type="Script" uid="uid://c7505rjkk6rpg" path="res://resources/data_structures/cutscene_script.gd" id="1_cutscene_script"]
+[ext_resource type="Script" uid="uid://b2sxig6otw26p" path="res://resources/data_structures/cutscene_step.gd" id="2_cutscene_step"]
+
+[sub_resource type="Resource" id="Resource_tutorial_step_1"]
+script = ExtResource("2_cutscene_step")
+type = 2
+text = "Now that you've started your journey, remember to manage your skills and memories from the backpack."
+
+[sub_resource type="Resource" id="Resource_tutorial_step_2"]
+script = ExtResource("2_cutscene_step")
+type = 2
+text = "Pay attention to your experience and crystal count, they are key to your progression."
+
+[resource]
+script = ExtResource("1_cutscene_script")
+id = "tutorial_stage_2"
+steps = Array[ExtResource("2_cutscene_step")]([SubResource("Resource_tutorial_step_1"), SubResource("Resource_tutorial_step_2")])
+metadata/_custom_type_script = "uid://b2sxig6otw26p"

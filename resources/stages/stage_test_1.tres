@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=2 format=3 uid="uid://stage_test_1"]
+
+[ext_resource type="Script" path="res://resources/data_structures/stage_data.gd" id="1_stage_script"]
+
+[resource]
+script = ExtResource("1_stage_script")
+id = "stage_test_1"
+name = "開頭動畫"
+req_exp = 0
+cutscene_id = "startup_intro_cutscene"
