@@ -58,7 +58,7 @@ func _refresh_ui():
 			var mem_id = active_memories[i].id
 			# Check if memory shard is collected
 			var is_collected = ProgressManager.unlocked_memory_ids.has(mem_id)
-			_update_torch_state(torch, is_collected)
+			torch.refresh_visuals(is_collected)
 
 func open_skill_detail(skill_id: String):
 	var skill_data = ProgressManager.get_skill_data(skill_id) # Get skill data from ProgressManager
@@ -118,7 +118,7 @@ func setup_backpack():
 		torch.name = mem_data.id
 		memories_container.add_child(torch)
 		var is_unlocked = ProgressManager.unlocked_memory_ids.has(mem_data.id)
-		_update_torch_state(torch, is_unlocked)
+		torch.refresh_visuals(is_unlocked)
 		# Connect button press to play cutscene
 		torch.pressed.connect(func():
 			# Get the memory ID associated with this torch
@@ -131,9 +131,9 @@ func setup_backpack():
 				backpack_root.visible = false
 
 			# If the memory is NOT collected, update the torch state to 'lit'
-			# This will play the 'light_torch' animation via _update_torch_state
+			# This will play the 'light_torch' animation via refresh_visuals
 			if not is_collected:
-				_update_torch_state(torch, true)
+				torch.refresh_visuals(true)
 
 			# Always play the cutscene associated with this memory
 			CutsceneManager.play(mem_data.cutscene_id)
@@ -142,22 +142,11 @@ func setup_backpack():
 	# Refresh UI to ensure initial state is correct
 	_refresh_ui()
 
-func _update_torch_state(torch: Control, is_unlocked: bool):
-	# Play the appropriate animation and set color
-	if torch.has_node("AnimatedSprite2D"):
-		var animated_sprite = torch.get_node("AnimatedSprite2D")
-		if is_unlocked:
-			animated_sprite.play("light_torch")
-			torch.modulate = Color.WHITE
-		else:
-			animated_sprite.play("unlit")
-			torch.modulate = Color(0.6, 0.6, 0.6)
-
 func _on_memory_collected(memory_id: String):
 	# Find the torch corresponding to the collected memory and light it
 	var torch = memories_container.get_node_or_null(memory_id)
 	if torch:
-		_update_torch_state(torch, true)
+		torch.refresh_visuals(true)
 		print("Torch lit for memory: ", memory_id)
 
 func perform_upgrade():
