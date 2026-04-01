@@ -1,15 +1,13 @@
-extends Area2D
+extends Node2D
 
 @export var memory_resource: MemoryData # 直接拖入對應的 .tres
 
-func _ready():
-	body_entered.connect(_on_collected)
-	# 視覺初始化
-	if memory_resource:
-		$Sprite2D.texture = memory_resource.icon
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D # Corrected node reference
 
-func _on_collected(body):
-	if body.is_in_group("player"):
-		ProgressManager.collect_memory(memory_resource.id)
-		# 播放獲得提示或小動畫
-		queue_free()
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("touched a shard")
+	ProgressManager.collect_memory(memory_resource.id)
+	# Optionally play a collection animation here before queue_free() if one exists.
+	# Example: animated_sprite.play("collected")
+	# await animated_sprite.animation_finished # if playing animation
+	queue_free()

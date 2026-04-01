@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="MemoryData" load_steps=3 format=3 uid="uid://cubtjcul5jyfl"]
+[gd_resource type="Resource" script_class="MemoryData" load_steps=2 format=3 uid="uid://cubtjcul5jyfl"]
 
 [ext_resource type="Script" uid="uid://cfdxuil23cl5k" path="res://resources/data_structures/memory_data.gd" id="1_memory_data"]
-
-[sub_resource type="Resource" id="Resource_placeholder_icon_1"]
 
 [resource]
 script = ExtResource("1_memory_data")
@@ -10,4 +8,3 @@ id = "mem_stage_start"
 name = "The Journey's Dawn"
 description = "A faint echo of the beginning of your grand adventure."
 cutscene_id = "startup_intro_cutscene"
-icon = SubResource("Resource_placeholder_icon_1")

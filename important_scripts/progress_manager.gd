@@ -5,10 +5,11 @@ const PATH_STAGES = "res://resources/stages/"
 const PATH_MEMORIES = "res://resources/memories/"
 const PATH_SKILLS = "res://resources/skills/"
 const PATH_CUTSCENES = "res://resources/cutscenes/"
-const MEMORY_ORDER_PATH = "res://resources/memories/memory_order.tres"
+const PATH_ORDERS = "res://resources/memories/orders/"
 const FALLBACK_ID = "default_failure_cutscene"
 
 # --- 2. 玩家數據與狀態 ---
+var mode: String = "full"
 var crystal_count: int = 1000
 var _current_exp: int = 0
 
@@ -36,13 +37,21 @@ signal memory_collected(memory_id: String)
 
 func _ready() -> void:
 	# 初始化基礎資源
-	active_stages.assign(_load_resources(PATH_STAGES, StageData).values())
+	var stage_map = _load_resources(PATH_STAGES + mode + "/", StageData)
+	active_stages.assign(stage_map.values())
+	active_stages.sort_custom(func(a, b): return a.req_exp < b.req_exp)
+	
 	active_skills = _load_resources(PATH_SKILLS, SkillData)
+	# Initialize player skill levels for all active skills
+	for skill_id in active_skills:
+		if not player_skill_levels.has(skill_id):
+			player_skill_levels[skill_id] = 1
 	active_cutscenes = _load_resources(PATH_CUTSCENES, CutsceneScript)
 	
 	# 初始化記憶系統 (因涉及排序邏輯，保留獨立提取)
 	var all_mems = _load_resources(PATH_MEMORIES, MemoryData)
-	var order_res = load(MEMORY_ORDER_PATH) as MemoryOrder
+	var order_path = PATH_ORDERS + mode + "_memory_order.tres"
+	var order_res = load(order_path) as MemoryOrder
 	if order_res:
 		for mem_id in order_res.ordered_memory_ids:
 			if mem_id in all_mems: active_memories.append(all_mems[mem_id])
@@ -86,11 +95,17 @@ func _load_resources(path: String, type: GDScript) -> Dictionary:
 	var collection = {}
 	var dir = DirAccess.open(path)
 	if not dir: return collection
+	
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		if file_name.ends_with(".tres"):
-			var res = load(path + file_name)
+		var full_path = path.plus_file(file_name)
+		if dir.current_is_dir():
+			if not file_name.begins_with("."): # Skip hidden directories
+				var sub_collection = _load_resources(full_path + "/", type)
+				collection.merge(sub_collection)
+		elif file_name.ends_with(".tres"):
+			var res = load(full_path)
 			if is_instance_of(res, type) and "id" in res:
 				collection[res.id] = res
 		file_name = dir.get_next()
@@ -124,3 +139,6 @@ func _on_cutscene_finished(cutscene_id: String) -> void:
 
 func get_skill_data(skill_id: String) -> SkillData:
 	return active_skills.get(skill_id)
+
+func get_player_skill_level(skill_id: String) -> int:
+	return player_skill_levels.get(skill_id, 1)

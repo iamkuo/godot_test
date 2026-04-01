@@ -5,20 +5,28 @@ extends Node
 var _script_map := {}
 
 func _ready() -> void:
-	# Load all .tres files from cutscenes directory
-	# Load cutscene files from directory
-	var dir = DirAccess.open("res://resources/cutscenes/")
+	# Load all .tres files from cutscenes directory recursively
+	_load_cutscenes_recursive("res://resources/cutscenes/")
+	
+	# 建立 ID → Script 對照表
+	for script in scripts:
+		_script_map[script.id] = script
+
+func _load_cutscenes_recursive(path: String) -> void:
+	var dir = DirAccess.open(path)
 	if not dir:
-		push_error("Failed to open cutscenes directory")
+		push_error("Failed to open directory: " + path)
 		return
 	
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	
 	while file_name != "":
-		if file_name.ends_with(".tres"):
-			# Corrected path: removed extra slash after res:
-			var full_path = "res://resources/cutscenes/" + file_name
+		var full_path = path.plus_file(file_name)
+		if dir.current_is_dir():
+			if not file_name.begins_with("."):
+				_load_cutscenes_recursive(full_path + "/")
+		elif file_name.ends_with(".tres"):
 			var cutscene_script = load(full_path) as CutsceneScript
 			if cutscene_script:
 				scripts.append(cutscene_script)
@@ -28,10 +36,6 @@ func _ready() -> void:
 		file_name = dir.get_next()
 	
 	dir.list_dir_end()
-	
-	# 建立 ID → Script 對照表
-	for script in scripts:
-		_script_map[script.id] = script
 
 # =============================
 # 對外 API（你只需要這一行）

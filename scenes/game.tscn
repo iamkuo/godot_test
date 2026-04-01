@@ -7,6 +7,7 @@
 
 [node name="GUI" parent="." instance=ExtResource("1_qbsmt")]
 unique_name_in_owner = true
+layer = 2
 
 [node name="SceneContainer" type="Node" parent="."]
 

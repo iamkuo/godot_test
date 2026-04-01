@@ -22,7 +22,7 @@ func _ready():
 	# We get the skill data from ProgressManager to know which skills exist
 	# for skill_id in ProgressManager.active_skills:
 	# 	player_skill_levels[skill_id] = 1 # REMOVED: Logic moved to ProgressManager
-
+	await get_tree().process_frame
 	backpack_root.visible = false
 	detail_popup.hide()
 	setup_backpack()
@@ -48,7 +48,7 @@ func _refresh_ui():
 		if ProgressManager.active_skills.has(skill_node.name): # Check if skill is active via ProgressManager
 			if skill_node.has_node("VBoxContainer/Level"):
 				# skill_node.get_node("VBoxContainer/Level").text = "Lv." + str(player_skill_levels[skill_node.name]) # USE LOCAL
-				skill_node.get_node("VBoxContainer/Level").text = "Lv." + str(ProgressManager.get_player_skill_level(skill_node.name)) # USE PROGRESS MANAGER
+				skill_node.get_node("VBoxContainer/Level").text = "Lv." + str(ProgressManager.get_player_skill_level(skill_node.name))
 
 	# Refresh memory torch states
 	var active_memories = ProgressManager.active_memories # Get memories from ProgressManager
@@ -105,7 +105,7 @@ func setup_backpack():
 		name_node.text = skill_data.name
 		# Display level from local player_skill_levels
 		# level_node.text = "Lv." + str(player_skill_levels.get(skill_id, 1)) # USE LOCAL
-		level_node.text = "Lv." + str(ProgressManager.get_player_skill_level(skill_id)) # USE PROGRESS MANAGER
+		level_node.text = "Lv." + str(ProgressManager.player_skill_levels[skill_id]) # USE PROGRESS MANAGER
 		
 		# Connect button press event
 		upgrade_btn.pressed.connect(func(): open_skill_detail(skill_id))
@@ -125,18 +125,11 @@ func setup_backpack():
 			var mem_id = mem_data.id
 			# Check if the memory has already been collected
 			var is_collected = ProgressManager.unlocked_memory_ids.has(mem_id)
-
-			# Close the backpack if it's open
-			if backpack_root.visible:
+			
+			if is_collected:
 				backpack_root.visible = false
-
-			# If the memory is NOT collected, update the torch state to 'lit'
-			# This will play the 'light_torch' animation via refresh_visuals
-			if not is_collected:
-				torch.refresh_visuals(true)
-
-			# Always play the cutscene associated with this memory
-			CutsceneManager.play(mem_data.cutscene_id)
+				# Always play the cutscene associated with this memory
+				CutsceneManager.play(mem_data.cutscene_id)
 		)
 	
 	# Refresh UI to ensure initial state is correct

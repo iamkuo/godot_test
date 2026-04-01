@@ -2,33 +2,53 @@
 extends Control
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+var _last_unlocked_state: Variant = null 
 
-# 將原本的 _on_resized 與 update_state 合併
-# 增加一個預設參數 is_unlocked，預設為 null 表示不改變目前狀態，只做縮放
 func refresh_visuals(is_unlocked = null) -> void:
-	if not animated_sprite or not animated_sprite.sprite_frames:
+	# 確保節點已經準備好
+	if not is_inside_tree() or not animated_sprite:
 		return
 
-	# 1. 處理狀態轉變（如果有傳入新狀態）
+	# 1. 狀態處理與 Debug (維持原樣)
 	if is_unlocked != null:
-		if is_unlocked:
-			animated_sprite.play("light_torch")
-			self.modulate = Color.WHITE
-		else:
-			animated_sprite.play("unlit")
-			self.modulate = Color(0.6, 0.6, 0.6)
+		if is_unlocked != _last_unlocked_state:
+			_last_unlocked_state = is_unlocked
+			if is_unlocked:
+				animated_sprite.play("lit")
+				self.modulate = Color.WHITE
+				print("[Debug] ", name, ": Lit")
+			else:
+				animated_sprite.play("unlit")
+				self.modulate = Color(0.6, 0.6, 0.6)
+				print("[Debug] ", name, ": Unlit")
 
-	# 2. 處理縮放邏輯（不論狀態是否改變，Resize 時都會跑這裡）
-	var current_anim = animated_sprite.animation
-	var frame_texture = animated_sprite.sprite_frames.get_frame_texture(current_anim, 0)
+	# 2. 修正縮放與置中邏輯
+	_update_layout()
+
+func _update_layout() -> void:
+	var frames = animated_sprite.sprite_frames
+	if not frames: return
 	
-	if frame_texture:
-		animated_sprite.scale = Vector2(size.x / frame_texture.get_width(),
-										 size.y / frame_texture.get_height())
-		animated_sprite.position = size / 2
+	# 取得當前動畫的第一張貼圖來計算尺寸
+	var curr_anim = animated_sprite.animation
+	var tex = frames.get_frame_texture(curr_anim, 0)
+	
+	if tex:
+		var tex_size = tex.get_size()
+		# 防止除以零
+		if tex_size.x > 0 and tex_size.y > 0:
+			# 計算縮放比例：讓貼圖填滿 Control 節點的大小
+			# 如果你希望保持比例，取 min(size.x/tex.x, size.y/tex.y)
+			var scale_factor = Vector2(size.x / tex_size.x, size.y / tex_size.y)
+			animated_sprite.scale = scale_factor
+			
+			# 強制置中：Sprite 的中心點 = 父節點尺寸的一半
+			animated_sprite.position = size / 2
+			
+			# 如果火把還是太小，檢查你的 Control 節點是否有設定 Custom Minimum Size
 
 func _ready() -> void:
-	# 直接連接到合併後的函數，縮放時自動觸發 [cite: 11]
-	resized.connect(refresh_visuals)
-	# 初始化執行一次
+	# 確保在容器完成排版後才計算
+	await get_tree().process_frame 
+	resized.connect(_update_layout)
 	refresh_visuals()
