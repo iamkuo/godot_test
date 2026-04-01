@@ -9,7 +9,7 @@ const PATH_ORDERS = "res://resources/memories/orders/"
 const FALLBACK_ID = "default_failure_cutscene"
 
 # --- 2. 玩家數據與狀態 ---
-var mode: String = "full"
+var mode: String = "test"
 var crystal_count: int = 1000
 var _current_exp: int = 0
 
@@ -99,7 +99,7 @@ func _load_resources(path: String, type: GDScript) -> Dictionary:
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		var full_path = path.plus_file(file_name)
+		var full_path = path.path_join(file_name)
 		if dir.current_is_dir():
 			if not file_name.begins_with("."): # Skip hidden directories
 				var sub_collection = _load_resources(full_path + "/", type)

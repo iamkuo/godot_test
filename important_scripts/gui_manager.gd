@@ -112,7 +112,7 @@ func queue_fullscreen(item_data: Dictionary) -> void:
 # =============================
 
 func _change_state(next_state: int) -> void:
-	var previous_state = current_state
+	# var previous_state = current_state
 	current_state = next_state as gui_state
 	# print("GUI state changed from %s to %s" % [gui_state.keys()[previous_state],
 	# gui_state.keys()[current_state]])
