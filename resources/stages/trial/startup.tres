@@ -8,4 +8,5 @@ id = "universal_startup"
 name = "Universal Startup"
 req_exp = 0
 cutscene_id = "startup_intro"
+unlocks_memory_id = "mem_startup"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

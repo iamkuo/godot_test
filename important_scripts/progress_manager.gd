@@ -15,8 +15,10 @@ var _current_exp: int = 0
 
 var current_exp: int = 0:
 	set(value):
-		_current_exp = value
-		_check_stage_progression()
+		if value != _current_exp:
+			_current_exp = value
+			# Defer progression check to prevent multiple calls in one frame
+			call_deferred("_check_stage_progression")
 	get:
 		return _current_exp
 var current_stage_index: int = -1
@@ -61,33 +63,36 @@ func _ready() -> void:
 # --- 6. 核心進度邏輯 ---
 
 func _check_stage_progression() -> void:
-	var next_idx = current_stage_index + 1
-	if active_stages.is_empty() or next_idx >= active_stages.size(): return
+	# Loop through all stages that the current exp qualifies for
+	while true:
+		var next_idx = current_stage_index + 1
+		if active_stages.is_empty() or next_idx >= active_stages.size(): break
 
-	var stage = active_stages[next_idx]
-	if current_exp < stage.req_exp: return
+		var stage = active_stages[next_idx]
+		if current_exp < stage.req_exp: break
 
-	# 符合條件：更新進度
-	current_stage_index = next_idx
-	
-	# 處理記憶收集 (原本的 _try_collect_memory_by_cutscene 已併入此處與 _on_cutscene_finished)
-	if not stage.cutscene_id.is_empty():
-		for mem in active_memories:
-			if mem.cutscene_id == stage.cutscene_id:
-				collect_memory(mem.id)
-				break
-	
-	# 處理劇情觸發 (原本的 _handle_stage_unlock 與 _handle_cutscene_fallback 已合併)
-	if stage.cutscene_id.is_empty():
-		data_updated.emit()
-	elif stage.cutscene_id in active_cutscenes:
-		CutsceneManager.play(stage.cutscene_id)
-	else:
-		push_error("[PlayerDataManager] 資源遺失: %s" % stage.cutscene_id)
-		if FALLBACK_ID in active_cutscenes:
-			CutsceneManager.play(FALLBACK_ID)
+		# 符合條件：更新進度
+		current_stage_index = next_idx
+		print("advanced stage to "+str(current_stage_index)+" at exp "+str(current_exp))
+		
+		# Unlock the memory shard associated with this stage (if any)
+		if stage.unlocks_memory_id:
+			collect_memory(stage.unlocks_memory_id)
+		
+		# 處理劇情觸發 (原本的 _handle_stage_unlock 與 _handle_cutscene_fallback 已合併)
+		if stage.cutscene_id.is_empty():
+			data_updated.emit()
+		elif stage.cutscene_id in active_cutscenes:
+			CutsceneManager.play(stage.cutscene_id)
 		else:
-			_on_cutscene_finished("FORCE_SKIP")
+			push_error("[PlayerDataManager] 資源遺失: %s" % stage.cutscene_id)
+			if FALLBACK_ID in active_cutscenes:
+				CutsceneManager.play(FALLBACK_ID)
+			else:
+				for mem in active_memories:
+					if mem.cutscene_id == FALLBACK_ID:
+						collect_memory(mem.id)
+						break
 
 # --- 7. 通用工具與對外接口 ---
 
@@ -129,13 +134,6 @@ func upgrade_player_skill(id: String) -> bool:
 		data_updated.emit()
 		return true
 	return false
-
-func _on_cutscene_finished(cutscene_id: String) -> void:
-	# 劇情結束後檢查是否有對應記憶需解鎖
-	for mem in active_memories:
-		if mem.cutscene_id == cutscene_id:
-			collect_memory(mem.id)
-			break
 
 func get_skill_data(skill_id: String) -> SkillData:
 	return active_skills.get(skill_id)

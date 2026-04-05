@@ -8,4 +8,5 @@ id = "full_get_map"
 name = "Get Map"
 req_exp = 400
 cutscene_id = "get_map"
+unlocks_memory_id = "mem_get_map"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

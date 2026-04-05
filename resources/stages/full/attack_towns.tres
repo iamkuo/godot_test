@@ -8,4 +8,5 @@ id = "full_attack_towns"
 name = "Attack Towns"
 req_exp = 1100
 cutscene_id = "attack_towns"
+unlocks_memory_id = ""
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

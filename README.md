@@ -31,6 +31,8 @@ The project is structured around several key singletons that manage different as
 
 ## Resource Management
 
+**For a complete inventory of all resources, stages, memories, and their relationships, see [`RESOURCES.md`](RESOURCES.md).**
+
 The game's data-driven logic relies on custom `Resource` types defined in `resources/data_structures/`. Actual data instances are stored as `.tres` files in their respective folders under `resources/`. **Resources are loaded recursively from their respective directories, allowing for subfolder-based organization (e.g., for labels or grouping).**
 
 ### Resource Types
@@ -70,13 +72,17 @@ The game's data-driven logic relies on custom `Resource` types defined in `resou
   - `icon`: Associated icon.
 
 #### **4. Stage (`StageData`)**
-- **Location**: `resources/stages/` (Supports subfolders)
+- **Location**: `resources/stages/` (Supports subfolders: `test/`, `trial/`, `full/` for different game modes)
 - **Definition**: `resources/data_structures/stage_data.gd`
-- **Purpose**: Milestones for game progression.
+- **Purpose**: Defines progression milestones that unlock memories and trigger cutscenes when player reaches required experience.
 - **Key Fields**:
   - `id`: Unique string ID.
-  - `req_exp`: Experience needed to unlock this stage.
-  - `cutscene_id`: Cutscene played when the player reaches this stage.
+  - `name`: Display name (for debug/editor reference).
+  - `req_exp`: Experience points required to unlock this stage.
+  - `cutscene_id`: ID of the `CutsceneScript` to play when stage is reached.
+  - `unlocks_memory_id`: ID of the `MemoryData` shard to collect when this stage is reached (empty string if stage doesn't unlock a memory). **This is the direct, explicit way memories are collected during progression.**
+
+**Memory Collection Design:** Stages unlock specific memories via `unlocks_memory_id` reference. This direct approach (as opposed to matching cutscene IDs) ensures memories light up correctly in the backpack UI. See `BUGS_ARCHIVED.md` for the reasoning behind this design pattern (Bug 3 fix).
 
 #### **5. Memory Order (`MemoryOrder`)**
 - **Location**: `resources/memories/memory_order.tres`
@@ -145,3 +151,11 @@ The game's data-driven logic relies on custom `Resource` types defined in `resou
 - **Animation Enhancement**: Integrate `AnimationTree` for more complex character state management (idle, run, jump transitions).
 - **UI Robustness**: Consolidate resource loading ownership to simplify UI synchronization and state updates.
 - **Consistent IDs**: Ensure unique and consistent naming conventions for all data resources (memories, cutscenes).
+
+---
+
+## Documentation Reference
+
+- **[`RESOURCES.md`](RESOURCES.md)** - Complete inventory of all game resources: stages by mode, memories, skills, cutscenes, and their relationships
+- **[`BUGS_ARCHIVED.md`](BUGS_ARCHIVED.md)** - Historical bugs and their solutions for reference and regression prevention
+- **[`AGENTS.md`](AGENTS.md)** - AI agent instructions and development patterns

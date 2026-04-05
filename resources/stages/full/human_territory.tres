@@ -8,4 +8,5 @@ id = "full_human_territory"
 name = "Human Territory"
 req_exp = 900
 cutscene_id = "human_territory"
+unlocks_memory_id = "mem_human_territory"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

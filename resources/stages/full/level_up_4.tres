@@ -8,4 +8,5 @@ id = "full_level_up_4"
 name = "Level Up"
 req_exp = 1200
 cutscene_id = "level_up"
+unlocks_memory_id = ""
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

@@ -8,4 +8,5 @@ id = "full_open_world"
 name = "Open World"
 req_exp = 200
 cutscene_id = "open_world"
+unlocks_memory_id = "mem_open_world"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

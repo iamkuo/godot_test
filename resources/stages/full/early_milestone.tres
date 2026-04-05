@@ -8,4 +8,5 @@ id = "early_milestone"
 name = "Early Milestone"
 req_exp = 10
 cutscene_id = "early_milestone_cutscene"
+unlocks_memory_id = ""
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

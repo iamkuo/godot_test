@@ -8,4 +8,5 @@ id = "full_goblin_capital"
 name = "Goblin Capital"
 req_exp = 800
 cutscene_id = "goblin_capital"
+unlocks_memory_id = "mem_goblin_capital"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

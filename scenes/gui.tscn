@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dm625ksy5738w"]
 
-[ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/sprites/Border and Panels Menu/04 Border 03.png" id="1_mfius"]
+[ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/images/ui/panels/04 Border 03.png" id="1_mfius"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_ynd5l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0nni"]
@@ -268,6 +268,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FullscreenUI"]
 root_node = NodePath("../..")

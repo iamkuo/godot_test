@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+signal coin_amount_changed(new_amount: int)
+
 @export var speed: float = 200.0
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var coin_label = $Camera2D/gems
+
 var coin_counter = 0
 
 func _physics_process(_delta: float) -> void:
@@ -34,8 +36,8 @@ func _physics_process(_delta: float) -> void:
 		
 func set_coin(new_coin_count: int) -> void:
 	coin_counter = new_coin_count
-	coin_label.text = "coin count: " + str(coin_counter)
-	
+	coin_amount_changed.emit(coin_counter)
+
 
 
 func _on_button_pressed():

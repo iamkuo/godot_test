@@ -8,4 +8,5 @@ id = "trial_first_village"
 name = "First Village"
 req_exp = 300
 cutscene_id = "first_village"
+unlocks_memory_id = "mem_first_village"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

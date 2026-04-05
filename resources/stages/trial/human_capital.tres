@@ -8,4 +8,5 @@ id = "trial_human_capital"
 name = "Human Capital"
 req_exp = 700
 cutscene_id = "human_capital"
+unlocks_memory_id = "mem_human_capital"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

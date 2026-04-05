@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="1_jn4bt"]
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="2_r1fnm"]
-[ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/sprites/objects/owowowwo.png" id="3_wen6a"]
-[ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/sprites/PNG/Icons.png" id="4_cml1b"]
+[ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/images/objects/owowowwo.png" id="3_wen6a"]
+[ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/images/ui/elements/Icons.png" id="4_cml1b"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ipoc1"]
 color = Color(0.3137255, 0.7294118, 0.15294118, 1)

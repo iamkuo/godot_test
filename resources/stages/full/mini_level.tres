@@ -8,4 +8,5 @@ id = "full_mini_level"
 name = "Mini Level"
 req_exp = 100
 cutscene_id = "mini_level"
+unlocks_memory_id = "mem_mini_level"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

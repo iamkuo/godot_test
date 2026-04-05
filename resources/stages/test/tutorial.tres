@@ -8,4 +8,5 @@ id = "test_tutorial"
 name = "Test Tutorial"
 req_exp = 20
 cutscene_id = "tutorial_stage_2"
+unlocks_memory_id = "mem_tutorial_guidance"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

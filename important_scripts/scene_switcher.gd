@@ -21,7 +21,7 @@ func switch_scene(scene_name: String, transition_type: String):
 func _deferred_switch_scene(scene_name: String, transition_type: String):
 	print("switching scene")
 	transition_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	# Ensure the FullscreenUI and ColorRect are visible before starting animation
+	# Show fullscreen_ui so transition_rect (its child) is visible
 	fullscreen_ui.show()
 	transition_rect.color = Color(0, 0, 0, 0) # Start transparent for fade-in
 	transition_rect.show() # Make sure it's visible
@@ -39,4 +39,3 @@ func _deferred_switch_scene(scene_name: String, transition_type: String):
 
 	# Emit signal that transition is complete
 	scene_transition_finished.emit(scene_name)
-	fullscreen_ui.hide()

@@ -3,6 +3,10 @@ extends Node
 @export var scripts: Array[CutsceneScript]
 
 var _script_map := {}
+var _is_playing := false  # Track if a cutscene is currently playing
+var _queue: Array[String] = []  # Queue of cutscene IDs waiting to play
+
+signal cutscene_finished(cutscene_id: String)
 
 func _ready() -> void:
 	# Load all .tres files from cutscenes directory recursively
@@ -41,10 +45,27 @@ func _load_cutscenes(path: String) -> void:
 # 對外 API（你只需要這一行）
 # =============================
 func play(id: String) -> void:
+	# Validate cutscene exists
 	if not _script_map.has(id):
 		push_error("Cutscene ID not found: " + id)
 		return
 	
+	# If already playing, queue this cutscene for later
+	if _is_playing:
+		_queue.append(id)
+		return
+	
+	_is_playing = true
+	await _play_impl(id)
+	_is_playing = false
+	cutscene_finished.emit(id)
+	
+	# Play next queued cutscene if any
+	if _queue.size() > 0:
+		var next_id = _queue.pop_front()
+		play(next_id)
+
+func _play_impl(id: String) -> void:
 	# Run the cutscene script
 	var script = _script_map[id]
 	for step in script.steps:

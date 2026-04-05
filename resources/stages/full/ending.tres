@@ -8,4 +8,5 @@ id = "full_ending"
 name = "Ending (Full)"
 req_exp = 1400
 cutscene_id = "ending_full"
+unlocks_memory_id = "mem_ending_full"
 metadata/_custom_type_script = "uid://bfg5kjb0bo8cr"

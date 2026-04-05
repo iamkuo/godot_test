@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://hjwobmyip8lh"]
 
-[ext_resource type="Texture2D" uid="uid://dpwll505d2ym" path="res://assets/sprites/objects/teleport_point.png" id="1_dvxg5"]
+[ext_resource type="Texture2D" uid="uid://dpwll505d2ym" path="res://assets/images/objects/teleport_point.png" id="1_dvxg5"]
 [ext_resource type="PackedScene" uid="uid://1v15txqs225" path="res://scenes/go_to_arena.tscn" id="3_1v2qx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v2qx"]

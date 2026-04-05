@@ -51,8 +51,6 @@ func _ready() -> void:
 	text_end = dialog.get_node("HBoxContainer/End") as Label
 	
 	fullscreen_ui = get_node("/root/Game/GUI/FullscreenUI") as Control
-	# Removed: color_rect = fullscreen_ui.get_node("ColorRect") as ColorRect
-	# Assuming a new node named "DialogOverlay" is added as a child of the "Dialog" node.
 	dialog_color_rect = fullscreen_ui.get_node("DialogOverlay") as ColorRect 
 	fullscreen_label = fullscreen_ui.get_node("Label") as Label
 	texture_rect = fullscreen_ui.get_node("TextureRect") as TextureRect
@@ -75,19 +73,19 @@ func _process(_delta: float) -> void:
 						_show_fullscreen_logic(cmd.content)
 		
 		gui_state.DIALOG_READING:
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("ui_skip"):
 				_skip_typing(dialog_tween, text_label)
 		
 		gui_state.DIALOG_FINISHED:
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("ui_skip"):
 				_advance_queue("dialog")
 
 		gui_state.FULLSCREEN_READING:
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("ui_skip"):
 				_skip_typing(fullscreen_tween, fullscreen_label)
 		
 		gui_state.FULLSCREEN_FINISHED:
-			if Input.is_action_just_pressed("ui_accept"):
+			if Input.is_action_just_pressed("ui_skip"):
 				_advance_queue("fullscreen")
 
 # =============================
@@ -115,7 +113,7 @@ func _change_state(next_state: int) -> void:
 	# var previous_state = current_state
 	current_state = next_state as gui_state
 	# print("GUI state changed from %s to %s" % [gui_state.keys()[previous_state],
-	# gui_state.keys()[current_state]])
+	# gui_state.keys()[current_state]])ss
 	
 func _advance_queue(finished_type: String) -> void:
 	# 決定是否要隱藏當前 UI：
