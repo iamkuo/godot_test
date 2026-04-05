@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
-signal coin_amount_changed(new_amount: int)
 
 @export var speed: float = 200.0
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var coin_counter = 0
 
 func _physics_process(_delta: float) -> void:
 	var input_vector = Vector2.ZERO
@@ -34,12 +32,3 @@ func _physics_process(_delta: float) -> void:
 		anim_sprite.flip_h = false
 		anim_sprite.play("idle_down")  # 這裡假設角色停止時面向下
 		
-func set_coin(new_coin_count: int) -> void:
-	coin_counter = new_coin_count
-	coin_amount_changed.emit(coin_counter)
-
-
-
-func _on_button_pressed():
-	set_coin(coin_counter +1)
-	print(coin_counter)

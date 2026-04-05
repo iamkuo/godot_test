@@ -1,5 +1,5 @@
 # BackpackUI.gd
-extends CanvasLayer
+extends Control
 
 # 預載入 UI 小節點
 const skill_node_tscn = preload("res://scenes/skill.tscn")

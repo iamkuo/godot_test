@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=4 uid="uid://dw1mwbbepdoi1"]
+[gd_scene load_steps=25 format=4 uid="uid://dw1mwbbepdoi1"]
 
-[ext_resource type="Script" uid="uid://bvlgb1rm4njx2" path="res://important_scripts/main_world.gd" id="1_urbfd"]
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/images/environment/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/images/environment/grass.png" id="2_sfmdb"]
 [ext_resource type="PackedScene" uid="uid://cpog3fskyl4m7" path="res://scenes/pause.tscn" id="3_bokwj"]
@@ -704,7 +703,6 @@ sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
 
 [node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_urbfd")
 
 [node name="Player" parent="." instance=ExtResource("7_so2xy")]
 unique_name_in_owner = true
@@ -758,32 +756,12 @@ tile_set = SubResource("TileSet_u5sy4")
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="Gui" type="Control" parent="GUILayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="HUD" parent="GUILayer" instance=ExtResource("14_urbfd")]
 
-[node name="Pause" parent="GUILayer/Gui" instance=ExtResource("3_bokwj")]
+[node name="Backpack" parent="GUILayer" instance=ExtResource("4_avgj4")]
+visible = false
+
+[node name="Pause" parent="GUILayer" instance=ExtResource("3_bokwj")]
 process_mode = 3
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Backpack" parent="GUILayer/Gui" instance=ExtResource("4_avgj4")]
-visible = false
-
-[node name="HUD" parent="GUILayer/Gui" instance=ExtResource("14_urbfd")]
-layout_mode = 1
+script = null

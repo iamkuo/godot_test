@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://cpog3fskyl4m7"]
 
-[ext_resource type="Script" uid="uid://6in6khrhafif" path="res://other_scripts/pauseuid.gd" id="1_jn4bt"]
+[ext_resource type="Script" path="res://other_scripts/pause.gd" id="1_pauses"]
 [ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="2_r1fnm"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/images/objects/owowowwo.png" id="3_wen6a"]
 [ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/images/ui/elements/Icons.png" id="4_cml1b"]
@@ -55,102 +55,75 @@ texture = SubResource("AtlasTexture_sr1c3")
 
 [node name="Pause" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 193.0
-offset_top = 74.0
-offset_right = 233.0
-offset_bottom = 114.0
-script = ExtResource("1_jn4bt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pauses")
 
-[node name="background" type="Panel" parent="."]
-z_index = 31
-y_sort_enabled = true
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 307.0
-offset_top = 161.0
-offset_right = 299.0
-offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="pausebutton" type="Label" parent="background"]
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 320)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 86.0
-offset_top = -40.5
-offset_right = 296.0
-offset_bottom = -10.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="pausebutton" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
 theme_override_font_sizes/font_size = 20
 text = "game paused"
 horizontal_alignment = 1
 
-[node name="textcontain" type="VBoxContainer" parent="background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.37800002
-anchor_top = 0.344
-anchor_right = 0.62200004
-anchor_bottom = 0.785
-offset_left = 110.88
-offset_top = 8.023995
-offset_right = 268.88
-offset_bottom = 146.6
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 15
+columns = 2
 
-[node name="sound effect3" type="Label" parent="background/textcontain"]
+[node name="sound effect3" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_r1fnm")
 theme_override_font_sizes/font_size = 14
 text = "main volume"
-horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="music2" type="Label" parent="background/textcontain"]
+[node name="main volume" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 14
-text = "music"
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="background/textcontain"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 14
-text = "sound effect"
-horizontal_alignment = 1
-
-[node name="Panel4" type="Panel" parent="background"]
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -2.125
-anchor_top = -1.7
-anchor_right = 16.375
-anchor_bottom = 9.525001
-offset_left = -743.0
-offset_top = -195.7
-offset_right = 426.0
-offset_bottom = 275.775
-
-[node name="main volume" type="HSlider" parent="background"]
-z_index = 2
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 25.0
-offset_top = 44.0
-offset_right = 389.0
-offset_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_icons/grabber = ExtResource("3_wen6a")
 theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
 theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
@@ -158,72 +131,70 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="CheckButton" type="CheckButton" parent="background"]
-z_index = 2
-layout_mode = 0
-offset_left = 82.0
-offset_top = 180.0
-offset_right = 332.0
-offset_bottom = 204.0
+[node name="music2" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r1fnm")
+theme_override_font_sizes/font_size = 14
+text = "music"
+vertical_alignment = 1
+
+[node name="music" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("3_wen6a")
+theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
+theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
+value = 50.0
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r1fnm")
+theme_override_font_sizes/font_size = 14
+text = "sound effect"
+vertical_alignment = 1
+
+[node name="sound effect" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("3_wen6a")
+theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
+theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
+value = 50.0
+
+[node name="CheckButton" type="CheckButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kkkdg")
 theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
 text = "Fullscreen/Windowed"
 
-[node name="continue" type="Button" parent="background"]
-z_index = 2
-layout_mode = 0
-offset_left = 124.0
-offset_top = 222.0
-offset_right = 153.0
-offset_bottom = 249.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="continue" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_aicil")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_r1fnm")
 
-[node name="exit" type="Button" parent="background"]
-z_index = 2
-layout_mode = 0
-offset_left = 263.0
-offset_top = 222.0
-offset_right = 292.0
-offset_bottom = 249.0
+[node name="exit" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wen6a")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cml1b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jn4bt")
-
-[node name="music" type="HSlider" parent="background"]
-z_index = 2
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 25.0
-offset_top = 94.0
-offset_right = 389.0
-offset_bottom = 121.0
-theme_override_icons/grabber = ExtResource("3_wen6a")
-theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
-theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
-value = 50.0
-
-[node name="sound effect" type="HSlider" parent="background"]
-z_index = 2
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 25.0
-offset_top = 145.0
-offset_right = 389.0
-offset_bottom = 172.0
-theme_override_icons/grabber = ExtResource("3_wen6a")
-theme_override_icons/grabber_highlight = ExtResource("3_wen6a")
-theme_override_styles/slider = SubResource("StyleBoxLine_ipoc1")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
-value = 50.0
-
-[connection signal="pressed" from="background/continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="background/exit" to="." method="_on_exit_pressed"]
