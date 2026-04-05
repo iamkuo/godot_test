@@ -6,12 +6,12 @@
 [sub_resource type="Resource" id="Resource_tutorial_step_1"]
 script = ExtResource("2_cutscene_step")
 type = 2
-text = "Now that you've started your journey, remember to manage your skills and memories from the backpack."
+text = "既然你已經開始了旅程，記得從背包中管理你的技能和記憶。"
 
 [sub_resource type="Resource" id="Resource_tutorial_step_2"]
 script = ExtResource("2_cutscene_step")
 type = 2
-text = "Pay attention to your experience and crystal count, they are key to your progression."
+text = "注意你的經驗值和水晶數量，它們是成長的關鍵。"
 
 [resource]
 script = ExtResource("1_cutscene_script")

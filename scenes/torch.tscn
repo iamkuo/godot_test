@@ -95,3 +95,17 @@ script = ExtResource("2_abc12")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x1r1x")
 animation = &"unlit"
+
+[node name="MemoryLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = -5.0
+grow_horizontal = 2
+text = "Memory"
+alignment = 1

@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_step_1"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "The Full story ends here."
+speaker = "旁白"
+text = "完整故事在此結束。"
 
 [sub_resource type="Resource" id="Resource_step_2"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "A legend has been written."
+speaker = "旁白"
+text = "一段傳奇已經建立。"
 
 [resource]
 script = ExtResource("1_script")

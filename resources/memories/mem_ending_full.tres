@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_ending_full"
-name = "Ending (Full)"
-description = "Memory of the full ending."
+name = "完整結局"
+description = "關於完整遊戲結局的記憶。"
 cutscene_id = "ending_full"
 metadata/_custom_type_script = "uid://cfdxuil23cl5k"

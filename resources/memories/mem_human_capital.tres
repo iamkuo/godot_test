@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_human_capital"
-name = "Human Capital"
-description = "Memory of the Human Capital."
+name = "人類主城"
+description = "關於人類主城的記憶。"
 cutscene_id = "human_capital"
 metadata/_custom_type_script = "uid://cfdxuil23cl5k"

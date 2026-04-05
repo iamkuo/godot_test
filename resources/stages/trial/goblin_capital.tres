@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "trial_goblin_capital"
-name = "Goblin Capital"
+name = "哥布林主城"
 req_exp = 500
 cutscene_id = "goblin_capital"
 unlocks_memory_id = "mem_goblin_capital"

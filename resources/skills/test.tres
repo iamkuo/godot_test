@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_gywnn")
 id = "test"
-name = "Test"
-description = "test"
+name = "測試技能"
+description = "用於測試功能的技能。"
 metadata/_custom_type_script = "uid://b20bkn2tup6no"

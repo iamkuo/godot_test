@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_mini_level"
-name = "Mini Level"
-description = "Memory of the mini level."
+name = "微型關卡"
+description = "關於微型關卡的記憶。"
 cutscene_id = "mini_level"
 metadata/_custom_type_script = "uid://cfdxuil23cl5k"

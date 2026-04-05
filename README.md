@@ -7,7 +7,8 @@ This is a 2D RPG/Adventure game developed with **Godot 4.5 (Forward Plus)**. The
 - **Engine**: Godot 4.5
 - **Language**: GDScript
 - **Rendering**: Forward Plus
-- **Resolution**: 1024x540 (Viewport Stretch)
+- **Resolution**: 1152x648 (Base Design), Responsive scaling enabled
+- **Stretch Mode**: `canvas_items` (sharp UI), Aspect: `expand`
 - **Asset Filter**: Nearest Neighbor (`default_texture_filter=0`)
 
 ---
@@ -128,7 +129,7 @@ The game's data-driven logic relies on custom `Resource` types defined in `resou
 ### Controls & Input Map
 - **Movement**: WASD / Arrow Keys (`ui_left`, `ui_right`, `ui_up`, `ui_down`)
 - **Interact**: `E` key
-- **Pause**: `Esc` key (`ui_cancel`)
+- **Pause/Back**: `Esc` key (`ui_cancel`) - Pauses game and goes back in menus
 
 ### Physics Layers
 1. **Player**

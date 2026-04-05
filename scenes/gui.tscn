@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm625ksy5738w"]
+[gd_scene load_steps=16 format=3 uid="uid://dm625ksy5738w"]
 
 [ext_resource type="Texture2D" uid="uid://cjmwhv0846in6" path="res://assets/images/ui/panels/04 Border 03.png" id="1_mfius"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_ynd5l"]
@@ -217,6 +217,9 @@ _data = {
 &"slide_left_out": SubResource("Animation_s0nni")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_mfius"]
+font_size = 36
+
 [node name="GUI" type="CanvasLayer"]
 
 [node name="Dialog" type="Panel" parent="."]
@@ -249,7 +252,7 @@ label_settings = SubResource("LabelSettings_aug50")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Never gonna give you up never gonna let you down"
+text = "我絕不會放棄你，絕不會讓你失望"
 label_settings = SubResource("LabelSettings_kiw3p")
 autowrap_mode = 3
 clip_text = true
@@ -258,7 +261,7 @@ clip_text = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "V"
+text = "▼"
 label_settings = SubResource("LabelSettings_400sg")
 
 [node name="FullscreenUI" type="Control" parent="."]
@@ -302,6 +305,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.0015550554
+label_settings = SubResource("LabelSettings_mfius")
 horizontal_alignment = 1
 vertical_alignment = 1
 

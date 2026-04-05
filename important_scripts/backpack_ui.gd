@@ -13,11 +13,20 @@ var current_skill_id: String = ""
 @onready var popup_title = detail_popup.get_node("Title")
 @onready var popup_description = detail_popup.get_node("Description")
 @onready var popup_upgradebtn = detail_popup.get_node("UpgradeBtn")
-@onready var skill_grid = $TabContainer/人物與技能/SkillGrid
-@onready var memories_container = $"TabContainer/永恆之焰的記憶/ScrollContainer/HBoxContainer"
+@onready var popup_closebtn = detail_popup.get_node("CloseButton")
+@onready var skill_grid = $MarginContainer/TabContainer/SkillsTab/SkillGrid
+@onready var memories_container = $"MarginContainer/TabContainer/MemoriesTab/ScrollContainer/HBoxContainer"
 @onready var backpack_root = $"."
+@onready var tab_container = $MarginContainer/TabContainer
+
+var _skill_nodes: Dictionary = {} # skill_id -> skill_node
+var _memory_torches: Dictionary = {} # memory_id -> torch_node
 
 func _ready():
+	# Set tab titles to Chinese
+	tab_container.set_tab_title(0, "技能")
+	tab_container.set_tab_title(1, "回憶")
+	
 	# Initialize skill levels (default to 1)
 	# We get the skill data from ProgressManager to know which skills exist
 	# for skill_id in ProgressManager.active_skills:
@@ -28,6 +37,7 @@ func _ready():
 	setup_backpack()
 	
 	popup_upgradebtn.pressed.connect(func(): perform_upgrade())
+	popup_closebtn.pressed.connect(func(): detail_popup.hide())
 
 	# ProgressManager signals
 	ProgressManager.data_updated.connect(_refresh_ui)
@@ -35,30 +45,41 @@ func _ready():
 	
 	_refresh_ui()
 
-func _process(_delta):
-	#  Using default 'ui_focus_next' as E key to toggle backpack
-	if Input.is_action_just_pressed("ui_focus_next"):
+func _input(event):
+	# Handle Tab (ui_focus_next) to toggle backpack
+	if event.is_action_pressed("ui_focus_next"):
 		backpack_root.visible = !backpack_root.visible
-		if backpack_root.visible: _refresh_ui()
+		if backpack_root.visible: 
+			_refresh_ui()
+		else:
+			detail_popup.hide()
+		get_viewport().set_input_as_handled()
+	
+	# Handle ESC (ui_cancel) for staged closing
+	elif event.is_action_pressed("ui_cancel"):
+		if detail_popup.visible:
+			detail_popup.hide()
+			get_viewport().set_input_as_handled()
+		elif backpack_root.visible:
+			backpack_root.visible = false
+			get_viewport().set_input_as_handled()
+
+func _process(_delta):
+	pass # Logic moved to _input for better control
 
 func _refresh_ui():
-	# Refresh skill levels display
-	for skill_node in skill_grid.get_children():
-		# if player_skill_levels.has(skill_node.name): # CHECK AGAINST LOCAL
-		if ProgressManager.active_skills.has(skill_node.name): # Check if skill is active via ProgressManager
-			if skill_node.has_node("VBoxContainer/Level"):
-				# skill_node.get_node("VBoxContainer/Level").text = "Lv." + str(player_skill_levels[skill_node.name]) # USE LOCAL
-				skill_node.get_node("VBoxContainer/Level").text = "Lv." + str(ProgressManager.get_player_skill_level(skill_node.name))
+	# Refresh skill levels display using Dictionary
+	for skill_id in _skill_nodes:
+		var skill_node = _skill_nodes[skill_id]
+		if skill_node.has_node("VBoxContainer/Level"):
+			skill_node.get_node("VBoxContainer/Level").text = "等級 " + str(ProgressManager.get_player_skill_level(skill_id))
 
-	# Refresh memory torch states
-	var active_memories = ProgressManager.active_memories # Get memories from ProgressManager
-	for i in memories_container.get_child_count():
-		if i < active_memories.size():
-			var torch = memories_container.get_child(i)
-			var mem_id = active_memories[i].id
-			# Check if memory shard is collected
-			var is_collected = ProgressManager.unlocked_memory_ids.has(mem_id)
-			torch.refresh_visuals(is_collected)
+	# Refresh memory torch states using Dictionary
+	for mem_id in _memory_torches:
+		var torch = _memory_torches[mem_id]
+		# Check if memory shard is collected
+		var is_collected = ProgressManager.unlocked_memory_ids.has(mem_id)
+		torch.refresh_visuals(is_collected)
 
 func open_skill_detail(skill_id: String):
 	var skill_data = ProgressManager.get_skill_data(skill_id) # Get skill data from ProgressManager
@@ -70,7 +91,7 @@ func open_skill_detail(skill_id: String):
 	var cost = int(skill_data.base_cost * pow(1.5, lv - 1))
 	
 	# Update popup UI content
-	popup_title.text = skill_data.name + " Lv." + str(lv)
+	popup_title.text = skill_data.name + " 等級 " + str(lv)
 	popup_description.text = skill_data.description
 	popup_upgradebtn.text = "升級 (消耗 " + str(cost) + " 水晶)"
 	detail_popup.show()
@@ -78,20 +99,26 @@ func open_skill_detail(skill_id: String):
 # --- Initialize backpack functionality ---
 func setup_backpack():
 	detail_popup.hide()
+	_skill_nodes.clear()
+	_memory_torches.clear()
 	
-	# Clear existing dynamic nodes
-	for n in skill_grid.get_children(): n.queue_free()
-	for n in memories_container.get_children(): n.queue_free()
+	# Clear existing dynamic nodes immediately to avoid naming conflicts
+	for n in skill_grid.get_children():
+		skill_grid.remove_child(n)
+		n.queue_free()
+	for n in memories_container.get_children():
+		memories_container.remove_child(n)
+		n.queue_free()
 	
 	# Dynamically generate skill nodes
-	# Iterate over skills loaded by ProgressManager
 	for skill_id in ProgressManager.active_skills:
-		var skill_data = ProgressManager.active_skills[skill_id] # This line assumes active_skills is a dictionary mapping ID to data
+		var skill_data = ProgressManager.active_skills[skill_id]
 		
 		# Instantiate skill card
 		var skill_node = skill_node_tscn.instantiate()
 		skill_node.name = skill_id
 		skill_grid.add_child(skill_node)
+		_skill_nodes[skill_id] = skill_node # Store in dictionary
 		
 		# Get skill card's child nodes
 		var vbox = skill_node.get_node("VBoxContainer")
@@ -103,32 +130,29 @@ func setup_backpack():
 		# Setting up skill card elements
 		icon_node.texture = skill_data.icon
 		name_node.text = skill_data.name
-		# Display level from local player_skill_levels
-		# level_node.text = "Lv." + str(player_skill_levels.get(skill_id, 1)) # USE LOCAL
-		level_node.text = "Lv." + str(ProgressManager.player_skill_levels[skill_id]) # USE PROGRESS MANAGER
+		level_node.text = "等級 " + str(ProgressManager.player_skill_levels[skill_id])
 		
 		# Connect button press event
 		upgrade_btn.pressed.connect(func(): open_skill_detail(skill_id))
 
 	# Dynamically generate memory torches
-	# Iterate over memories loaded by ProgressManager
 	var active_memories = ProgressManager.active_memories
 	for mem_data in active_memories:
 		var torch = torch_tscn.instantiate()
 		torch.name = mem_data.id
 		memories_container.add_child(torch)
+		_memory_torches[mem_data.id] = torch # Store in dictionary
+		
 		var is_unlocked = ProgressManager.unlocked_memory_ids.has(mem_data.id)
 		torch.refresh_visuals(is_unlocked)
+		torch.set_memory_name(mem_data.name)
+		
 		# Connect button press to play cutscene
 		torch.pressed.connect(func():
-			# Get the memory ID associated with this torch
 			var mem_id = mem_data.id
-			# Check if the memory has already been collected
 			var is_collected = ProgressManager.unlocked_memory_ids.has(mem_id)
-			
 			if is_collected:
 				backpack_root.visible = false
-				# Always play the cutscene associated with this memory
 				CutsceneManager.play(mem_data.cutscene_id)
 		)
 	
@@ -136,8 +160,8 @@ func setup_backpack():
 	_refresh_ui()
 
 func _on_memory_collected(memory_id: String):
-	# Find the torch corresponding to the collected memory and light it
-	var torch = memories_container.get_node_or_null(memory_id)
+	# Find the torch corresponding to the collected memory and light it using dictionary
+	var torch = _memory_torches.get(memory_id)
 	if torch:
 		torch.refresh_visuals(true)
 		print("Torch lit for memory: ", memory_id)

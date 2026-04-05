@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_step_1"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "The Human Capital is reached."
+speaker = "旁白"
+text = "抵達了人類王都。"
 
 [sub_resource type="Resource" id="Resource_step_2"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "The final confrontation awaits."
+speaker = "旁白"
+text = "最後的對決正等著你。"
 
 [resource]
 script = ExtResource("1_script")

@@ -119,8 +119,11 @@ func _load_resources(path: String, type: GDScript) -> Dictionary:
 func collect_memory(id: String) -> void:
 	if id not in unlocked_memory_ids:
 		unlocked_memory_ids.append(id)
+		print("Signal emitted: memory_collected for ID ", id)
 		memory_collected.emit(id)
 		data_updated.emit()
+	else:
+		print("Memory already collected: ", id)
 
 func upgrade_player_skill(id: String) -> bool:
 	var skill = active_skills.get(id)

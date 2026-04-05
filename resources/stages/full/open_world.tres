@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "full_open_world"
-name = "Open World"
+name = "開放世界"
 req_exp = 200
 cutscene_id = "open_world"
 unlocks_memory_id = "mem_open_world"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dw1mwbbepdoi1"]
+[gd_scene load_steps=22 format=4 uid="uid://dw1mwbbepdoi1"]
 
 [ext_resource type="Texture2D" uid="uid://co5n7bwvy1gmq" path="res://assets/images/environment/plains.png" id="1_wynhp"]
 [ext_resource type="Texture2D" uid="uid://b8tob1an8h4os" path="res://assets/images/environment/grass.png" id="2_sfmdb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://3m0i8x4jbjf8" path="res://scenes/cutscene.tscn" id="12_avgj4"]
 [ext_resource type="PackedScene" uid="uid://wlq4biqy0aoq" path="res://scenes/shard.tscn" id="12_urbfd"]
 [ext_resource type="PackedScene" uid="uid://bmq6fpmu037ux" path="res://scenes/hud.tscn" id="14_urbfd"]
+[ext_resource type="Resource" uid="uid://cf1sqltdfklyf" path="res://resources/memories/memory_tutorial_guidance.tres" id="16_cf1sq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_wynhp")
@@ -685,22 +686,6 @@ physics_layer_0/collision_mask = 11
 sources/0 = SubResource("TileSetAtlasSource_u5sy4")
 sources/1 = SubResource("TileSetAtlasSource_kvpfn")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vtaks"]
-resource_name = "TpPoints"
-scenes/1/scene = ExtResource("6_fatp1")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wj2hs"]
-resource_name = "Signs"
-scenes/1/scene = ExtResource("7_5irk3")
-
-[sub_resource type="TileSet" id="TileSet_p57ef"]
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 0
-custom_data_layer_0/name = "Name"
-custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetScenesCollectionSource_vtaks")
-sources/1 = SubResource("TileSetScenesCollectionSource_wj2hs")
-
 [node name="MainWorld" type="Node2D"]
 y_sort_enabled = true
 
@@ -727,11 +712,6 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD5//7/AAAIAAYAAAD5////AAAIAAcAAAD5/wAAAAAIAAgAAAD6//7/AAAJAAYAAAD6////AAAJAAcAAAD6/wAAAAAJAAgAAADy//7/AAAIAAYAAADy////AAAIAAcAAADy/wAAAAAIAAgAAADz//7/AAAJAAYAAADz////AAAJAAcAAADz/wAAAAAJAAgAAAACAP3/AAAIAAYAAAACAP7/AAAIAAcAAAACAP//AAAIAAgAAAADAP3/AAAJAAYAAAADAP7/AAAJAAcAAAADAP//AAAJAAgAAAD8/wAAAAAKAAAAAAD9/wAAAAALAAAAAAD5//n/AAAGAAcAAAD5//r/AAAGAAgAAAD6//n/AAAHAAcAAAD6//r/AAAHAAgAAAD7/wMAAAAKAAcAAAD7/wQAAAAKAAgAAAD8/wMAAAALAAcAAAD8/wQAAAALAAgAAAAFAPr/AAAGAAcAAAAFAPv/AAAGAAgAAAAGAPr/AAAHAAcAAAAGAPv/AAAHAAgAAAD//wEAAAAAAAUAAAD//wIAAAAAAAYAAAD//wMAAAAAAAcAAAD//wQAAAAAAAgAAAAAAAEAAAABAAUAAAAAAAIAAAABAAYAAAAAAAMAAAABAAcAAAAAAAQAAAABAAgAAAABAAEAAAACAAUAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAABAAQAAAACAAgAAAA=")
 tile_set = SubResource("TileSet_gee14")
 
-[node name="interatctables" type="TileMapLayer" parent="Map"]
-y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAFAAMAAQAAAAAAAQA=")
-tile_set = SubResource("TileSet_p57ef")
-
 [node name="Cutscenes" type="Node2D" parent="Map"]
 
 [node name="Test" parent="Map/Cutscenes" instance=ExtResource("12_avgj4")]
@@ -742,12 +722,18 @@ script_id = "test"
 
 [node name="Test" parent="Map/Signs" instance=ExtResource("7_5irk3")]
 position = Vector2(8, 104)
-sign_texts = Array[String](["test test test"])
+sign_texts = Array[String](["測試 傳送點"])
 
 [node name="Shards" type="Node2D" parent="Map"]
 
 [node name="test" parent="Map/Shards" instance=ExtResource("12_urbfd")]
 position = Vector2(-88, 56)
+memory_resource = ExtResource("16_cf1sq")
+
+[node name="TpPoints" type="Node2D" parent="Map"]
+
+[node name="Test" parent="Map/TpPoints" instance=ExtResource("6_fatp1")]
+position = Vector2(168, -56)
 
 [node name="hill" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
@@ -757,6 +743,7 @@ tile_set = SubResource("TileSet_u5sy4")
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="GUILayer" instance=ExtResource("14_urbfd")]
+visible = false
 
 [node name="Backpack" parent="GUILayer" instance=ExtResource("4_avgj4")]
 visible = false
@@ -764,4 +751,3 @@ visible = false
 [node name="Pause" parent="GUILayer" instance=ExtResource("3_bokwj")]
 process_mode = 3
 visible = false
-script = null

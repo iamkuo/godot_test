@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "trial_mini_level"
-name = "Mini Level"
+name = "微型關卡"
 req_exp = 100
 cutscene_id = "mini_level"
 unlocks_memory_id = "mem_mini_level"

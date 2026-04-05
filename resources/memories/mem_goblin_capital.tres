@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_goblin_capital"
-name = "Goblin Capital"
-description = "Memory of the Goblin Capital."
+name = "哥布林主城"
+description = "關於哥布林主城的記憶。"
 cutscene_id = "goblin_capital"
 metadata/_custom_type_script = "uid://cfdxuil23cl5k"

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_stage_start"
-name = "The Journey's Dawn"
-description = "A faint echo of the beginning of your grand adventure."
+name = "啟動"
+description = "最初的啟動記憶。"
 cutscene_id = "startup_intro_cutscene"

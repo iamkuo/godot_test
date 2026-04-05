@@ -1,17 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpog3fskyl4m7"]
+[gd_scene load_steps=22 format=3 uid="uid://cpog3fskyl4m7"]
 
-[ext_resource type="Script" path="res://other_scripts/pause.gd" id="1_pauses"]
-[ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="2_r1fnm"]
+[ext_resource type="Script" uid="uid://bsa684qtsf8iq" path="res://other_scripts/pause.gd" id="1_pauses"]
+[ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="3_cubic"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/images/objects/owowowwo.png" id="3_wen6a"]
 [ext_resource type="Texture2D" uid="uid://7ga0ljs8vtel" path="res://assets/images/ui/elements/Icons.png" id="4_cml1b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_aicil"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_jn4bt"]
+font_size = 24
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ipoc1"]
 color = Color(0.3137255, 0.7294118, 0.15294118, 1)
-thickness = 5
+thickness = 10
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8jl4h"]
 color = Color(0.29358447, 0.39963317, 0.14063469, 1)
-thickness = 5
+thickness = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kkkdg"]
 
@@ -71,55 +77,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.490196)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(400, 320)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="pausebutton" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 20
-text = "game paused"
+theme_override_fonts/font = ExtResource("3_cubic")
+theme_override_font_sizes/font_size = 24
+text = "遊戲暫停"
+label_settings = SubResource("LabelSettings_aicil")
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="sound effect3" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="main_volume_label" type="Label" parent="Panel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 14
-text = "main volume"
+theme_override_fonts/font = ExtResource("3_cubic")
+theme_override_font_sizes/font_size = 12
+text = "主音量"
+label_settings = SubResource("LabelSettings_jn4bt")
 vertical_alignment = 1
 
-[node name="main volume" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="main_volume_slider" type="HSlider" parent="Panel/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -131,14 +134,15 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="music2" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="music_label" type="Label" parent="Panel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 14
-text = "music"
+theme_override_fonts/font = ExtResource("3_cubic")
+theme_override_font_sizes/font_size = 12
+text = "音樂"
+label_settings = SubResource("LabelSettings_jn4bt")
 vertical_alignment = 1
 
-[node name="music" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="music_slider" type="HSlider" parent="Panel/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -150,14 +154,15 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="sound_effect_label" type="Label" parent="Panel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r1fnm")
-theme_override_font_sizes/font_size = 14
-text = "sound effect"
+theme_override_fonts/font = ExtResource("3_cubic")
+theme_override_font_sizes/font_size = 12
+text = "音效"
+label_settings = SubResource("LabelSettings_jn4bt")
 vertical_alignment = 1
 
-[node name="sound effect" type="HSlider" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"]
+[node name="sound_effect_slider" type="HSlider" parent="Panel/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -169,21 +174,21 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_8jl4h")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8jl4h")
 value = 50.0
 
-[node name="CheckButton" type="CheckButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="check_button" type="CheckButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kkkdg")
 theme_override_icons/checked = SubResource("DPITexture_swtu5")
 theme_override_icons/unchecked = SubResource("DPITexture_qudjn")
-text = "Fullscreen/Windowed"
+text = "全螢幕/視窗"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="continue" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="continue_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_liqfm")
@@ -191,7 +196,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_aicil")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jn4bt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_r1fnm")
 
-[node name="exit" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="exit_button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_urbfd")

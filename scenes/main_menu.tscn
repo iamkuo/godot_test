@@ -1,11 +1,58 @@
-[gd_scene load_steps=37 format=3 uid="uid://ypplfbkktob5"]
+[gd_scene load_steps=38 format=3 uid="uid://ypplfbkktob5"]
 
 [ext_resource type="Script" uid="uid://bdf0jm8drjafc" path="res://important_scripts/main_menu.gd" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://ca1w24r726wp3" path="res://assets/images/backgrounds/main_menu_bg.png" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dxc2pi1bwr1uu" path="res://assets/fonts/Cubic_11.ttf" id="2_ekxnf"]
-[ext_resource type="Script" uid="uid://bhw7a21hfnm6a" path="res://other_scripts/start_button.gd" id="3_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://ctsb3wvh450d3" path="res://assets/images/objects/owowowwo.png" id="5_oa1go"]
-[ext_resource type="FontFile" uid="uid://drknsr1c1j7xf" path="res://assets/fonts/PixelOperator8.ttf" id="5_rtw2f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+line_spacing = 5.0
+font_size = 48
+font_color = Color(0.1528835, 0.3804639, 0.2132208, 1)
+
+[sub_resource type="Theme" id="Theme_rtw2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
+border_width_left = 2
+border_width_bottom = 5
+border_color = Color(0.12607867, 0.4697165, 0.26531875, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 5.0
+shadow_color = Color(0.11013771, 0.24492949, 0.11013452, 0.6)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcqid"]
+bg_color = Color(0.23921569, 0.3372549, 0.11372549, 1)
+border_width_left = 4
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 4.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ajci"]
+bg_color = Color(0.11166271, 0.3273868, 0.18274787, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.11013771, 0.24492949, 0.11013452, 0.6)
+shadow_size = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b55j"]
 
 [sub_resource type="Theme" id="Theme_8ln24"]
 
@@ -124,10 +171,23 @@ shadow_size = 7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dfpl"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
-line_spacing = 5.0
-font_size = 52
-font_color = Color(0.1528835, 0.3804639, 0.2132208, 1)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ln24"]
+color = Color(0.3137255, 0.7294118, 0.15294118, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rtw2f"]
+color = Color(0.29358447, 0.39963317, 0.14063469, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
+
+[sub_resource type="DPITexture" id="DPITexture_rtw2f"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".37\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\" fill-opacity=\".5\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_oa1go"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
 
 [sub_resource type="Theme" id="Theme_l6cm7"]
 
@@ -166,67 +226,22 @@ corner_radius_bottom_left = 3
 shadow_color = Color(0.029506557, 0.029506557, 0.029506557, 0.45490196)
 shadow_size = 7
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ln24"]
-color = Color(0.3137255, 0.7294118, 0.15294118, 1)
-thickness = 5
+[sub_resource type="LabelSettings" id="LabelSettings_8ln24"]
+font_size = 36
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_rtw2f"]
-color = Color(0.29358447, 0.39963317, 0.14063469, 1)
-thickness = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_AboutText"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.05, 0.06, 0.04, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
-
-[sub_resource type="DPITexture" id="DPITexture_rtw2f"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".37\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\" fill-opacity=\".5\"/></svg>
-"
-
-[sub_resource type="DPITexture" id="DPITexture_oa1go"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
-"
-
-[sub_resource type="Theme" id="Theme_rtw2f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
-bg_color = Color(0.3137255, 0.42745098, 0.15294118, 1)
-border_width_left = 2
-border_width_bottom = 5
-border_color = Color(0.12607867, 0.4697165, 0.26531875, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-corner_detail = 1
-expand_margin_left = 2.0
-expand_margin_top = 5.0
-shadow_color = Color(0.11013771, 0.24492949, 0.11013452, 0.6)
-shadow_size = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcqid"]
-bg_color = Color(0.23921569, 0.3372549, 0.11372549, 1)
-border_width_left = 4
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 5
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 4.0
-expand_margin_bottom = 5.0
-shadow_color = Color(0.10980392, 0.24313726, 0.10980392, 0.6)
-shadow_size = 7
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ajci"]
-bg_color = Color(0.11166271, 0.3273868, 0.18274787, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-shadow_color = Color(0.11013771, 0.24492949, 0.11013452, 0.6)
-shadow_size = 7
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b55j"]
+[sub_resource type="LabelSettings" id="LabelSettings_wu84c"]
+font_size = 24
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -237,7 +252,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8ln24")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,159 +262,135 @@ grow_vertical = 2
 texture = ExtResource("1_l6cm7")
 expand_mode = 1
 
-[node name="dabuttons" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(250, 0)
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = 288.0
-offset_right = 125.0
-offset_bottom = -56.0
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.15
+anchor_right = 0.6
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+text = "終"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="setting2" type="Button" parent="dabuttons"]
+[node name="StartButton" type="Button" parent="MainButtons"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = SubResource("Theme_rtw2f")
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rcqid")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ajci")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7b55j")
+text = "開始遊戲"
+
+[node name="SettingsButton" type="Button" parent="MainButtons"]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 6
 theme = SubResource("Theme_8ln24")
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_5dd4i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lgwnu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_flqon")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rcqid")
 text = "設定"
 
-[node name="about2" type="Button" parent="dabuttons"]
+[node name="AboutButton" type="Button" parent="MainButtons"]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 6
 theme = SubResource("Theme_1ajci")
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_7b55j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5pajh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_j7ex8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a8gd2")
 text = "關於"
 
-[node name="quit2" type="Button" parent="dabuttons"]
+[node name="QuitButton" type="Button" parent="MainButtons"]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 6
 theme = SubResource("Theme_hstxw")
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_8egab")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gw5y6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_svtp6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1dfpl")
 text = "離開"
 
-[node name="Label" type="Label" parent="."]
+[node name="OptionsPanel" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -216.0
-offset_right = 28.0
-offset_bottom = -152.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_ekxnf")
-text = "終"
-label_settings = SubResource("LabelSettings_ekxnf")
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="options22" type="Label" parent="Panel"]
+[node name="Panel" type="Panel" parent="OptionsPanel"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="OptionsPanel/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.384
-anchor_top = 0.32000002
-anchor_right = 0.623
-anchor_bottom = 0.38500002
-offset_left = -0.21600342
-offset_top = -54.80002
-offset_right = 0.047973633
-offset_bottom = -52.90001
+anchor_left = 0.3
+anchor_top = 0.15
+anchor_right = 0.7
+anchor_bottom = 0.85
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_rtw2f")
-theme_override_font_sizes/font_size = 22
-text = "options"
-horizontal_alignment = 1
+theme_override_constants/separation = 25
+alignment = 1
 
-[node name="back2" type="Button" parent="Panel"]
-custom_minimum_size = Vector2(250, 40)
-layout_mode = 0
-offset_left = 387.0
-offset_top = 441.0
-offset_right = 637.0
-offset_bottom = 481.0
-size_flags_vertical = 6
-theme = SubResource("Theme_l6cm7")
+[node name="SettingsTitle" type="Label" parent="OptionsPanel/Panel/Content"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jk1qb")
-text = "back to game"
-
-[node name="textcontain" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.37800002
-anchor_top = 0.344
-anchor_right = 0.62200004
-anchor_bottom = 0.785
-offset_left = -0.072021484
-offset_top = 3.2399902
-offset_right = 0.07196045
-offset_bottom = 0.099975586
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 50
-
-[node name="main volune label" type="Label" parent="Panel/textcontain"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_rtw2f")
-theme_override_font_sizes/font_size = 17
-text = "main volume"
+theme_override_font_sizes/font_size = 36
+text = "選項"
 horizontal_alignment = 1
 
-[node name="sound effect" type="Label" parent="Panel/textcontain"]
+[node name="SettingsGrid" type="GridContainer" parent="OptionsPanel/Panel/Content"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_rtw2f")
-text = "sound effect"
-horizontal_alignment = 1
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
 
-[node name="sound effect2" type="Label" parent="Panel/textcontain"]
+[node name="MasterLabel" type="Label" parent="OptionsPanel/Panel/Content/SettingsGrid"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_rtw2f")
-text = "music"
-horizontal_alignment = 1
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "主音量"
+horizontal_alignment = 2
 
-[node name="main volume" type="HSlider" parent="Panel"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 0
-offset_left = 387.0
-offset_top = 224.0
-offset_right = 637.0
-offset_bottom = 234.0
+[node name="MasterSlider" type="HSlider" parent="OptionsPanel/Panel/Content/SettingsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_icons/grabber = ExtResource("5_oa1go")
 theme_override_icons/grabber_highlight = ExtResource("5_oa1go")
 theme_override_styles/slider = SubResource("StyleBoxLine_8ln24")
@@ -407,82 +398,129 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_rtw2f")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rtw2f")
 value = 50.0
 
-[node name="CheckButton" type="CheckButton" parent="Panel"]
-layout_mode = 0
-offset_left = 388.0
-offset_top = 384.0
-offset_right = 638.0
-offset_bottom = 417.0
+[node name="SfxLabel" type="Label" parent="OptionsPanel/Panel/Content/SettingsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "音效"
+horizontal_alignment = 2
+
+[node name="SfxSlider" type="HSlider" parent="OptionsPanel/Panel/Content/SettingsGrid"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("5_oa1go")
+theme_override_icons/grabber_highlight = ExtResource("5_oa1go")
+theme_override_styles/slider = SubResource("StyleBoxLine_8ln24")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_rtw2f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rtw2f")
+value = 50.0
+
+[node name="MusicLabel" type="Label" parent="OptionsPanel/Panel/Content/SettingsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "音樂"
+horizontal_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel/Panel/Content/SettingsGrid"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_icons/grabber = ExtResource("5_oa1go")
+theme_override_icons/grabber_highlight = ExtResource("5_oa1go")
+theme_override_styles/slider = SubResource("StyleBoxLine_8ln24")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_rtw2f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rtw2f")
+value = 50.0
+
+[node name="FullscreenButton" type="CheckButton" parent="OptionsPanel/Panel/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oa1go")
 theme_override_icons/checked = SubResource("DPITexture_rtw2f")
 theme_override_icons/unchecked = SubResource("DPITexture_oa1go")
-text = "Fullscreen/Windowed"
+text = "全螢幕/視窗"
 
-[node name="SNDEFCT" type="HSlider" parent="Panel"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.37800002
-anchor_top = 0.5
-anchor_right = 0.62200004
-anchor_bottom = 0.56100005
-offset_left = -0.072021484
-offset_top = 11.0
-offset_right = 0.07196045
-offset_bottom = 9.059967
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_icons/grabber = ExtResource("5_oa1go")
-theme_override_icons/grabber_highlight = ExtResource("5_oa1go")
-theme_override_styles/slider = SubResource("StyleBoxLine_8ln24")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_rtw2f")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rtw2f")
-value = 50.0
-
-[node name="music slder" type="HSlider" parent="Panel"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.37800002
-anchor_top = 0.5
-anchor_right = 0.62200004
-anchor_bottom = 0.56100005
-offset_left = -0.072052
-offset_top = 82.0
-offset_right = 0.07196045
-offset_bottom = 71.05997
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_icons/grabber = ExtResource("5_oa1go")
-theme_override_icons/grabber_highlight = ExtResource("5_oa1go")
-theme_override_styles/slider = SubResource("StyleBoxLine_8ln24")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_rtw2f")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_rtw2f")
-value = 50.0
-
-[node name="StartButton2" type="Button" parent="."]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 0.6
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 6
-theme = SubResource("Theme_rtw2f")
+[node name="BackButton" type="Button" parent="OptionsPanel/Panel/Content"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_l6cm7")
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rcqid")
-theme_override_styles/hover = SubResource("StyleBoxFlat_1ajci")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7b55j")
-text = "開始遊戲"
-script = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jk1qb")
+text = "回到遊戲"
 
-[connection signal="pressed" from="dabuttons/setting2" to="." method="_on_setting_2_pressed"]
-[connection signal="pressed" from="dabuttons/quit2" to="." method="_on_quit_2_pressed"]
-[connection signal="pressed" from="Panel/back2" to="." method="_on_back_2_pressed"]
-[connection signal="toggled" from="Panel/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="pressed" from="StartButton2" to="StartButton2" method="_on_pressed"]
+[node name="AboutPanel" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="AboutPanel"]
+layout_mode = 2
+
+[node name="VBoxContent" type="VBoxContainer" parent="AboutPanel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="AboutTitle" type="Label" parent="AboutPanel/Panel/VBoxContent"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "製作人員"
+label_settings = SubResource("LabelSettings_8ln24")
+horizontal_alignment = 1
+
+[node name="CreditsPanel" type="PanelContainer" parent="AboutPanel/Panel/VBoxContent"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_AboutText")
+
+[node name="CreditsText" type="Label" parent="AboutPanel/Panel/VBoxContent/CreditsPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+text = "主世界程式設計:郭睿元
+UI設計:徐安霆
+戰鬥機制設計:潘羽恆
+素材製作&美術總監:王郁政"
+label_settings = SubResource("LabelSettings_wu84c")
+horizontal_alignment = 1
+
+[node name="AboutBackButton" type="Button" parent="AboutPanel/Panel/VBoxContent"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_5dd4i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lgwnu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_flqon")
+text = "返回"
+
+[connection signal="pressed" from="MainButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainButtons/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="MainButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="OptionsPanel/Panel/Content/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="AboutPanel/Panel/VBoxContent/AboutBackButton" to="." method="_on_back_button_pressed"]

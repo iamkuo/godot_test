@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_step_1"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "The Goblin Capital looms ahead."
+speaker = "旁白"
+text = "哥布林王都在前方若隱若現。"
 
 [sub_resource type="Resource" id="Resource_step_2"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "A city of industry and greed."
+speaker = "旁白"
+text = "一座充滿工業與貪婪的城市。"
 
 [resource]
 script = ExtResource("1_script")

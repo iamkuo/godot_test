@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_step_1"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "Towns under attack!"
+speaker = "旁白"
+text = "城鎮遭到攻擊！"
 
 [sub_resource type="Resource" id="Resource_step_2"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "The chaos spreads."
+speaker = "旁白"
+text = "混亂正在蔓延。"
 
 [resource]
 script = ExtResource("1_script")

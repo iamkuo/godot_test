@@ -21,9 +21,10 @@ region_rect = Rect2(195, 579, 186, 186)
 
 [node name="Backpack" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_460lo")
@@ -37,46 +38,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5gcru")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = 50.0
-offset_right = -50.0
-offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="人物與技能" type="VBoxContainer" parent="TabContainer"]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="SkillsTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Portrait" type="TextureRect" parent="TabContainer/人物與技能"]
+[node name="Portrait" type="TextureRect" parent="MarginContainer/TabContainer/SkillsTab"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 expand_mode = 2
 
-[node name="SkillGrid" type="GridContainer" parent="TabContainer/人物與技能"]
+[node name="SkillGrid" type="GridContainer" parent="MarginContainer/TabContainer/SkillsTab"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 columns = 4
 
-[node name="永恆之焰的記憶" type="VBoxContainer" parent="TabContainer"]
+[node name="MemoriesTab" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/永恆之焰的記憶"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/MemoriesTab"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/永恆之焰的記憶/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/MemoriesTab/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -125,3 +129,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "升級
 "
+
+[node name="CloseButton" type="Button" parent="SkillDetailPopup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.88
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.12
+grow_horizontal = 0
+text = "X"

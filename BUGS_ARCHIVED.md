@@ -385,12 +385,45 @@ Parent Control nodes block input before children. Set parent `mouse_filter` base
 
 ---
 
+## Bug 7: Backpack Torches Not Lighting Up on Collection (FIXED)
+**Status:** ✅ FIXED
+
+### Symptoms
+- When picking up a memory shard in the game world, the corresponding torch in the backpack UI remains unlit (gray/dark).
+- The torch only correctly updates its visual state if the backpack is closed and reopened, or if the scene is reloaded.
+
+### Root Cause
+The `BackpackUI` script was instantiating torches and immediately calling `refresh_visuals(is_unlocked)` on them. However, since the torches were just added to the scene tree, their `@onready` variables (including the `AnimatedSprite2D`) were not yet initialized.
+In `torch_button.gd`:
+```gdscript
+func refresh_visuals(is_unlocked = null) -> void:
+	if not is_inside_tree() or not animated_sprite: # animated_sprite is NULL here!
+		return
+```
+This caused the initial "lit" state to be ignored. When a `memory_collected` signal was received later, if the backpack hadn't been opened yet, the same `animated_sprite is NULL` check would prevent the visual update.
+
+### Solution
+Modified `torch_button.gd` to store a "pending" unlocked state if `refresh_visuals` is called before the node is ready. 
+Additionally, refactored `backpack_ui.gd` to use **Dictionary-based node mapping** for both Skills and Memories:
+1.  **Immediate Removal**: In `setup_backpack`, added `remove_child(n)` before `queue_free(n)` to ensure the container is visually empty immediately, preventing name collisions and indexing errors in Godot's lifecycle.
+2.  **O(1) Dictionary Mapping**: Replaced fragile `get_node_or_null` and index-based `get_child` lookups with `_skill_nodes` and `_memory_torches` Dictionaries.
+3.  **Sync Logic**: Updated `_refresh_ui` and `_on_memory_collected` to use these dictionaries, ensuring O(1) performance and perfect sync even during rapid state changes.
+
+**Files Changed:**
+- `other_scripts/torch_button.gd` - Added pending state handling.
+- `important_scripts/backpack_ui.gd` - Full refactor to Dictionary-based mapping and robust child clearing.
+
+**Commit:** Implemented robust Dictionary-based UI mapping for backpack
+
+---
+
 ## Key Learnings
 1. **Ownership matters:** Managers should own and control their own UI. Don't have multiple systems manage the same node.
 2. **Default values matter:** Ensure scene defaults match the initial state (torches should default to unlit, not lit).
 3. **Avoid duplicate calls:** Property setters can trigger side effects - be careful with manual calls to the same function.
 4. **Signal specificity:** Use the correct physics signal - `area_entered` for Area2D collision, `body_entered` for physics bodies.
 5. **Scene tree structure:** Use dedicated containers for dynamic content. This prevents accidental deletion of critical nodes and makes scene switching predictable and safe.
+6. **Async Initialization:** `@onready` variables are not available until the node is "ready". If a method depends on these variables and is called immediately after instantiation (before the next frame), it must handle the uninitialized state (e.g., by buffering the request).
 
 ---
 

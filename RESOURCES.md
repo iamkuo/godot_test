@@ -45,10 +45,10 @@ I plugged some random memory just to test it.
 
 | Index | ID                  | req_exp | Name              | Unlocks Memory             | Triggers Cutscene       |
 |-------|---------------------|---------|-------------------|----------------------------|-------------------------|
-| 0     | `universal_startup` | 0       | Universal Startup | `mem_test_shard`           | `startup_intro_cutscene` |
-| 1     | `early_milestone`   | 10      | Early Milestone   | `mem_mini_level`           | `mini_level`            |
-| 2     | `tutorial`          | 20      | Tutorial          | `memory_tutorial_guidance` | `tutorial_stage_2`      |
-| 3     | `end`               | 30      | End               | `mem_ending_trial`         | (none)                  |
+| 0     | `universal_startup` | 0       | 通用啟動          | `mem_test_shard`           | `startup_intro_cutscene` |
+| 1     | `early_milestone`   | 10      | 早期里程碑          | `mem_mini_level`           | `mini_level`            |
+| 2     | `tutorial`          | 20      | 教學引導          | `memory_tutorial_guidance` | `tutorial_stage_2`      |
+| 3     | `end`               | 30      | 測試結束               | `mem_ending_trial`         | (none)                  |
 
 **Testing Sequence:**
 - Game starts at exp=0 → Stage 0 triggered
@@ -64,15 +64,15 @@ Balanced progression with more stages:
 
 | Index | ID                      | req_exp | Name              | Unlocks Memory             | Triggers Cutscene       |
 |-------|-------------------------|---------|-------------------|----------------------------|-------------------------|
-| 0     | `universal_startup`     | 0       | Universal Startup | `mem_test_shard`           | `startup_intro_cutscene` |
-| 1     | `trial_early_milestone` | 100     | Early Milestone   | `mem_mini_level`           | `mini_level`            |
-| 2     | `trial_first_village`   | 200     | First Village     | `mem_first_village`        | `first_village`         |
-| 3     | `trial_get_map`         | 300     | Get Map           | `mem_get_map`              | `get_map`               |
-| 4     | `trial_open_world`      | 400     | Open World        | `mem_open_world`           | `open_world`            |
-| 5     | `trial_human_territory` | 500     | Human Territory   | `mem_human_territory`      | `human_territory`       |
-| 6     | `trial_human_capital`   | 600     | Human Capital     | `mem_human_capital`        | `human_capital`         |
-| 7     | `trial_goblin_capital`  | 700     | Goblin Capital    | `mem_goblin_capital`       | `goblin_capital`        |
-| 8     | `trial_ending`          | 800     | Ending            | `mem_ending_trial`         | `ending_trial`          |
+| 0     | `universal_startup`     | 0       | 通用啟動          | `mem_test_shard`           | `startup_intro_cutscene` |
+| 1     | `trial_early_milestone` | 100     | 早期里程碑          | `mem_mini_level`           | `mini_level`            |
+| 2     | `trial_first_village`   | 200     | 第一座村莊          | `mem_first_village`        | `first_village`         |
+| 3     | `trial_get_map`         | 300     | 取得地圖               | `mem_get_map`              | `get_map`               |
+| 4     | `trial_open_world`      | 400     | 開放世界             | `mem_open_world`           | `open_world`            |
+| 5     | `trial_human_territory` | 500     | 人類領地          | `mem_human_territory`      | `human_territory`       |
+| 6     | `trial_human_capital`   | 600     | 人類王都          | `mem_human_capital`        | `human_capital`         |
+| 7     | `trial_goblin_capital`  | 700     | 哥布林王都           | `mem_goblin_capital`       | `goblin_capital`        |
+| 8     | `trial_ending`          | 800     | 試玩版結局            | `mem_ending_trial`         | `ending_trial`          |
 
 ---
 
@@ -82,21 +82,21 @@ Complete narrative with extensive progression:
 
 | Index | ID                     | req_exp | Name              | Unlocks Memory             | Triggers Cutscene       |
 |-------|------------------------|---------|-------------------|----------------------------|-------------------------|
-| 0     | `universal_startup`    | 0       | Universal Startup | `mem_test_shard`           | `startup_intro_cutscene` |
-| 1     | `full_early_milestone` | 100     | Early Milestone   | `mem_mini_level`           | `mini_level`            |
-| 2     | `full_first_village`   | 200     | First Village     | `mem_first_village`        | `first_village`         |
-| 3     | `full_get_map`         | 400     | Get Map           | `mem_get_map`              | `get_map`               |
-| 4     | `full_open_world`      | 500     | Open World        | `mem_open_world`           | `open_world`            |
-| 5     | `full_human_territory` | 600     | Human Territory   | `mem_human_territory`      | `human_territory`       |
-| 6     | `full_human_capital`   | 800     | Human Capital     | `mem_human_capital`        | `human_capital`         |
-| 7     | `full_goblin_capital`  | 1000    | Goblin Capital    | `mem_goblin_capital`       | `goblin_capital`        |
-| 8     | `full_attack_towns`    | 1200    | Attack Towns      | (none)                     | `attack_towns`          |
-| 9     | `full_defeat_villages` | 1400    | Defeat Villages   | (none)                     | `defeat_villages`       |
-| 10    | `full_level_up_1`      | 1500    | Level Up 1        | (none)                     | (none)                  |
-| 11    | `full_level_up_2`      | 2000    | Level Up 2        | (none)                     | (none)                  |
-| 12    | `full_level_up_3`      | 2500    | Level Up 3        | (none)                     | (none)                  |
-| 13    | `full_level_up_4`      | 3000    | Level Up 4        | (none)                     | (none)                  |
-| 14    | `full_ending`          | 3500    | Ending            | `mem_ending_full`          | `ending_full`           |
+| 0     | `universal_startup`    | 0       | 通用啟動          | `mem_test_shard`           | `startup_intro_cutscene` |
+| 1     | `full_early_milestone` | 100     | 早期里程碑          | `mem_mini_level`           | `mini_level`            |
+| 2     | `full_first_village`   | 200     | 第一座村莊          | `mem_first_village`        | `first_village`         |
+| 3     | `full_get_map`         | 400     | 取得地圖               | `mem_get_map`              | `get_map`               |
+| 4     | `full_open_world`      | 500     | 開放世界             | `mem_open_world`           | `open_world`            |
+| 5     | `full_human_territory` | 600     | 人類領地          | `mem_human_territory`      | `human_territory`       |
+| 6     | `full_human_capital`   | 800     | 人類王都          | `mem_human_capital`        | `human_capital`         |
+| 7     | `full_goblin_capital`  | 1000    | 哥布林王都           | `mem_goblin_capital`       | `goblin_capital`        |
+| 8     | `full_attack_towns`    | 1200    | 進攻城鎮            | (none)                     | `attack_towns`          |
+| 9     | `full_defeat_villages` | 1400    | 擊敗村莊          | (none)                     | `defeat_villages`       |
+| 10    | `full_level_up_1`      | 1500    | 等級提升 1               | (none)                     | (none)                  |
+| 11    | `full_level_up_2`      | 2000    | 等級提升 2               | (none)                     | (none)                  |
+| 12    | `full_level_up_3`      | 2500    | 等級提升 3               | (none)                     | (none)                  |
+| 13    | `full_level_up_4`      | 3000    | 等級提升 4               | (none)                     | (none)                  |
+| 14    | `full_ending`          | 3500    | 完整版結局            | `mem_ending_full`          | `ending_full`           |
 
 ---
 
@@ -175,6 +175,9 @@ Currently minimal skill system (single test skill):
 | Skill ID | Name       | Description          | Base Cost |
 |----------|------------|----------------------|-----------|
 | `test`   | Test Skill | A skill for testing. | 100       |
+| `skill_fireball` | Fireball | Unleash a compact sphere of intense heat. | 150 |
+| `skill_heal` | Healing Wind | A soothing breeze that restores vitality. | 200 |
+| `skill_dash` | Swift Dash | Quickly propel yourself forward. | 120 |
 
 Located in: `resources/skills/test.tres`
 

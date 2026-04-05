@@ -84,7 +84,7 @@ offset_top = 136.0
 offset_right = 252.0
 offset_bottom = 248.0
 theme = SubResource("Theme_f0p7x")
-text = "Back"
+text = "返回"
 script = ExtResource("2_f0p7x")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

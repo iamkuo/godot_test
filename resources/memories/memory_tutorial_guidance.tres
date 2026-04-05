@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_memory_data")
 id = "mem_tutorial_guidance"
-name = "Echoes of Guidance"
-description = "Recollection of the initial lessons learned."
+name = "引導的迴響"
+description = "關於最初所學課程的回憶。"
 cutscene_id = "tutorial_stage_2"

@@ -19,7 +19,7 @@ horizontal_alignment = 1
 
 [node name="Level" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Lv.1"
+text = "等級 1"
 horizontal_alignment = 1
 
 [node name="UpgradeBtn" type="Button" parent="VBoxContainer"]

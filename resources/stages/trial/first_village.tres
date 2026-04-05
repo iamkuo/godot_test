@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "trial_first_village"
-name = "First Village"
+name = "第一個村莊"
 req_exp = 300
 cutscene_id = "first_village"
 unlocks_memory_id = "mem_first_village"

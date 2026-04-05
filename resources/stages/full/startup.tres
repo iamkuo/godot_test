@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "universal_startup"
-name = "Universal Startup"
+name = "通用開頭"
 req_exp = 0
 cutscene_id = "startup_intro"
 unlocks_memory_id = "mem_startup"

@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_failure_step_1"]
 script = ExtResource("2_step")
 type = 3 # FULLSCREEN_TEXT
-text = "Error: The required cutscene could not be found."
+text = "錯誤：找不到所需的劇情動畫。"
 
 [resource]
 script = ExtResource("1_script")

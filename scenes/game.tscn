@@ -12,10 +12,3 @@ layer = 2
 [node name="SceneContainer" type="Node" parent="."]
 
 [node name="MainMenu" parent="SceneContainer" instance=ExtResource("3_cpr0p")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 1024.0
-offset_bottom = 540.0
-grow_horizontal = 1
-grow_vertical = 1

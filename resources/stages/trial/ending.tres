@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "trial_ending"
-name = "Ending (Trial)"
+name = "試玩版結局"
 req_exp = 800
 cutscene_id = "ending_trial"
 unlocks_memory_id = "mem_ending_trial"

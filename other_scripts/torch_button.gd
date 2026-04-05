@@ -2,18 +2,23 @@
 extends Control
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var memory_label: Label = $MemoryLabel
 var _last_unlocked_state: Variant = null 
+var _pending_is_unlocked: Variant = null
 
 func refresh_visuals(is_unlocked = null) -> void:
-	# 確保節點已經準備好
+	if is_unlocked != null:
+		_pending_is_unlocked = is_unlocked
+		
 	if not is_inside_tree() or not animated_sprite:
 		return
 
 	# 1. 狀態處理與 Debug (維持原樣)
-	if is_unlocked != null:
-		if is_unlocked != _last_unlocked_state:
-			_last_unlocked_state = is_unlocked
-			if is_unlocked:
+	var state_to_apply = is_unlocked if is_unlocked != null else _pending_is_unlocked
+	if state_to_apply != null:
+		if state_to_apply != _last_unlocked_state:
+			_last_unlocked_state = state_to_apply
+			if state_to_apply:
 				animated_sprite.play("lit")
 				self.modulate = Color.WHITE
 				print("[Debug] ", name, ": Lit")
@@ -51,4 +56,12 @@ func _ready() -> void:
 	# 確保在容器完成排版後才計算
 	await get_tree().process_frame 
 	resized.connect(_update_layout)
-	refresh_visuals()
+	if _pending_is_unlocked != null:
+		refresh_visuals(_pending_is_unlocked)
+	else:
+		refresh_visuals()
+
+func set_memory_name(memory_name: String) -> void:
+	"""Set the memory name displayed on the label."""
+	if memory_label:
+		memory_label.text = memory_name

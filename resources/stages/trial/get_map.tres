@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_stage_data")
 id = "trial_get_map"
-name = "Get Map"
+name = "獲得地圖"
 req_exp = 400
 cutscene_id = "get_map"
 unlocks_memory_id = "mem_get_map"

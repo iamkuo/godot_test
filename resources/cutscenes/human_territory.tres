@@ -6,14 +6,14 @@
 [sub_resource type="Resource" id="Resource_step_1"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "Entering Human Territory."
+speaker = "旁白"
+text = "進入了人類領地。"
 
 [sub_resource type="Resource" id="Resource_step_2"]
 script = ExtResource("2_step")
 type = 2
-speaker = "Narrator"
-text = "Watch your back, traveler."
+speaker = "旁白"
+text = "小心身後，旅人。"
 
 [resource]
 script = ExtResource("1_script")
