@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vk0c0cm5kgd7"
-path="res://.godot/imported/skeleton_swordless.png-8009c5f689db7057e4a2d574bc8a1a50.ctex"
+uid="uid://bhfkeba1c8ar3"
+path="res://.godot/imported/world_tileset.png-8f6258ad632bc2352f552c3a305d658a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/skeleton_swordless.png"
-dest_files=["res://.godot/imported/skeleton_swordless.png-8009c5f689db7057e4a2d574bc8a1a50.ctex"]
+source_file="res://assets/images/environment/landscape/world_tileset.png"
+dest_files=["res://.godot/imported/world_tileset.png-8f6258ad632bc2352f552c3a305d658a.ctex"]
 
 [params]
 

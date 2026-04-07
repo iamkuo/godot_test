@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4hsfx7r1fd1"
-path="res://.godot/imported/water_decorations.png-2d0df1f5aefded1a314480f191e52208.ctex"
+uid="uid://cyte53xr308od"
+path="res://.godot/imported/water_lillies.png-1637bf352aad8f6da153dd35fa36f215.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/environment/water_decorations.png"
-dest_files=["res://.godot/imported/water_decorations.png-2d0df1f5aefded1a314480f191e52208.ctex"]
+source_file="res://assets/images/environment/landscape/water_lillies.png"
+dest_files=["res://.godot/imported/water_lillies.png-1637bf352aad8f6da153dd35fa36f215.ctex"]
 
 [params]
 

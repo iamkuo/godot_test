@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://74fkd4a6nugo"
-valid=false
+uid="uid://cgau0qv11pv3x"
+path="res://.godot/imported/platforms.png-f058431b8bdbb5740c057b4130d9be8d.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/images/characters/goblin_cape.png"
+source_file="res://assets/images/environment/landscape/platforms.png"
+dest_files=["res://.godot/imported/platforms.png-f058431b8bdbb5740c057b4130d9be8d.ctex"]
 
 [params]
 

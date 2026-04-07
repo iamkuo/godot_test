@@ -31,6 +31,10 @@ ProgressManager="*res://important_scripts/progress_manager.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/custom_font="res://assets/fonts/Cubic_11.ttf"
+
 [input]
 
 ui_accept={
@@ -96,10 +100,6 @@ ui_skip={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
-
-[gui]
-
-theme/custom_font="res://assets/fonts/Cubic_11.ttf"
 
 [layer_names]
 

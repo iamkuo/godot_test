@@ -128,9 +128,11 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mfius"]
 resource_name = "none_in"
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_ynd5l"]
 resource_name = "none_out"
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_78awf"]
 resource_name = "slide_left_in"
