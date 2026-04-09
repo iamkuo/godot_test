@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjlb85jvlr35l"
-path="res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-784724299b5ee1ac057a22d35e56a61a.ctex"
+path="res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-e062d17337091a8f2ad03fd39d7a2924.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/1_MiniDungeon_Tileset_Background1.png"
-dest_files=["res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-784724299b5ee1ac057a22d35e56a61a.ctex"]
+source_file="res://assets/images/environment/floors/1_MiniDungeon_Tileset_Background1.png"
+dest_files=["res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-e062d17337091a8f2ad03fd39d7a2924.ctex"]
 
 [params]
 

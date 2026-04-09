@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgpyjd441kkag"
-path="res://.godot/imported/rock_in_water_05.png-8f78039057b6f107420af385e421a481.ctex"
+uid="uid://bg8ovc14n13vq"
+path="res://.godot/imported/goblin_summon.png-cf4ef9626d0d0dee9315102436479714.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/rock_in_water_05.png"
-dest_files=["res://.godot/imported/rock_in_water_05.png-8f78039057b6f107420af385e421a481.ctex"]
+source_file="res://assets/images/characters/goblin_summon.png"
+dest_files=["res://.godot/imported/goblin_summon.png-cf4ef9626d0d0dee9315102436479714.ctex"]
 
 [params]
 

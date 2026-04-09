@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca2tfw0q5u4q5"
-path="res://.godot/imported/0_Template_Tileset1_A.png-e3871233726193efd2908fc2f388fa4c.ctex"
+uid="uid://d0844ruqm8brm"
+path="res://.godot/imported/rock_in_water_01.png-ad274fa874b0626e4a0280b9ba7523a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/environment/floors/0_Template_Tileset1_A.png"
-dest_files=["res://.godot/imported/0_Template_Tileset1_A.png-e3871233726193efd2908fc2f388fa4c.ctex"]
+source_file="res://assets/images/objects/etc/rock_in_water_01.png"
+dest_files=["res://.godot/imported/rock_in_water_01.png-ad274fa874b0626e4a0280b9ba7523a1.ctex"]
 
 [params]
 

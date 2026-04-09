@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dovy4m80bygyd"
-path="res://.godot/imported/螢幕擷取畫面 2025-10-16 203137.png-0b50e5ce03b5323d9826cb4829534f26.ctex"
+uid="uid://bs4uqu2yn2j38"
+path="res://.godot/imported/world_tree.png-d351a20d7a7e211b879b977597a28cee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/objects/螢幕擷取畫面 2025-10-16 203137.png"
-dest_files=["res://.godot/imported/螢幕擷取畫面 2025-10-16 203137.png-0b50e5ce03b5323d9826cb4829534f26.ctex"]
+source_file="res://assets/images/characters/world_tree.png"
+dest_files=["res://.godot/imported/world_tree.png-d351a20d7a7e211b879b977597a28cee.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca2tfw0q5u4q5"
-path="res://.godot/imported/0_Template_Tileset1_A.png-e3871233726193efd2908fc2f388fa4c.ctex"
+uid="uid://ddwapix5g0mc1"
+path="res://.godot/imported/goblin_staff.png-246ac18b8b90d33ec9142bf197442532.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/environment/floors/0_Template_Tileset1_A.png"
-dest_files=["res://.godot/imported/0_Template_Tileset1_A.png-e3871233726193efd2908fc2f388fa4c.ctex"]
+source_file="res://assets/images/characters/goblin_staff.png"
+dest_files=["res://.godot/imported/goblin_staff.png-246ac18b8b90d33ec9142bf197442532.ctex"]
 
 [params]
 

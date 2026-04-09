@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0je4r81phhgb"
-path="res://.godot/imported/goblin_hooded.png-507b4146f9229d6ba8abcff850710051.ctex"
+uid="uid://b4jk1ior2mihv"
+path="res://.godot/imported/goblin_bow.png-52ebefd348dabca66de5d9c520d4dc55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/characters/goblin_hooded.png"
-dest_files=["res://.godot/imported/goblin_hooded.png-507b4146f9229d6ba8abcff850710051.ctex"]
+source_file="res://assets/images/characters/goblin_bow.png"
+dest_files=["res://.godot/imported/goblin_bow.png-52ebefd348dabca66de5d9c520d4dc55.ctex"]
 
 [params]
 

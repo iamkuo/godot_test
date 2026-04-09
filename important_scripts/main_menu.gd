@@ -2,14 +2,14 @@ extends Control
 
 # Nodes
 @onready var main_buttons: VBoxContainer = $MainButtons
-@onready var options_panel: MarginContainer = $OptionsPanel
-@onready var about_panel: MarginContainer = $AboutPanel
+@onready var options_panel: Panel = $OptionsPanel
+@onready var about_panel: Panel = $AboutPanel
 
 # Settings Nodes
-@onready var master_slider: HSlider = $OptionsPanel/Panel/Content/SettingsGrid/MasterSlider
-@onready var music_slider: HSlider = $OptionsPanel/Panel/Content/SettingsGrid/MusicSlider
-@onready var sfx_slider: HSlider = $OptionsPanel/Panel/Content/SettingsGrid/SfxSlider
-@onready var fullscreen_button: CheckButton = $OptionsPanel/Panel/Content/FullscreenButton
+@onready var master_slider: HSlider = $OptionsPanel/Content/SettingsGrid/MasterSlider
+@onready var music_slider: HSlider = $OptionsPanel/Content/SettingsGrid/MusicSlider
+@onready var sfx_slider: HSlider = $OptionsPanel/Content/SettingsGrid/SfxSlider
+@onready var fullscreen_button: CheckButton = $OptionsPanel/Content/FullscreenButton
 
 func _ready() -> void:
 	options_panel.hide()
