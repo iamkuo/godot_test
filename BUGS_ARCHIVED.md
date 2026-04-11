@@ -427,6 +427,32 @@ Additionally, refactored `backpack_ui.gd` to use **Dictionary-based node mapping
 
 ---
 
+## Bug 8: Resources Fail to Load in Exported Builds (FIXED)
+**Status:** ✅ FIXED
+
+### Symptoms
+- When running from the Godot editor, all resources (stages, memories, etc.) load correctly.
+- After exporting the game, no resources are loaded, breaking cutscenes and progression.
+
+### Root Cause
+In Godot 4.x, when text-based resources (like `.tres`) are exported, they are sometimes compiled to binary and saved with a `.remap` extension inside the exported PCK file (e.g., `my_memory.tres.remap`).
+The `_load_resources` function in `progress_manager.gd` used `file_name.ends_with(".tres")` during directory scanning. In an exported build, `DirAccess` encounters `my_memory.tres.remap` and skips it because it doesn't end with `.tres`.
+
+### Solution
+Added `trim_suffix(".remap")` to the filename before checking its extension and before constructing the absolute path for `load()`.
+Godot's `load()` function expects the original `.tres` path and resolves the `.remap` internally. By trimming `.remap`, we correctly parse the original filename and extension.
+
+```gdscript
+# Strip .remap if it exists (necessary for exported Godot builds)
+var actual_file_name = file_name.trim_suffix(".remap")
+var full_path = path.path_join(actual_file_name)
+```
+
+**Files Changed:**
+- `important_scripts/progress_manager.gd` - Applied `trim_suffix(".remap")` in `_load_resources()`.
+
+---
+
 ## Related Documentation
 - [`README.md`](README.md) - Project architecture and core systems
 - [`RESOURCES.md`](RESOURCES.md) - Complete inventory of stages, memories, skills, and cutscenes

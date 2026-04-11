@@ -23,7 +23,7 @@ var current_exp: int = 0:
 		return _current_exp
 var current_stage_index: int = -1
 var unlocked_memory_ids: Array[String] = []
-var player_skill_levels: Dictionary = {} 
+var player_skill_levels: Dictionary = {}
 
 # --- 3. 資源快取 ---
 var active_stages: Array[StageData] = []
@@ -73,7 +73,7 @@ func _check_stage_progression() -> void:
 
 		# 符合條件：更新進度
 		current_stage_index = next_idx
-		print("advanced stage to "+str(current_stage_index)+" at exp "+str(current_exp))
+		print("advanced stage to " + str(current_stage_index) + " at exp " + str(current_exp))
 		
 		# Unlock the memory shard associated with this stage (if any)
 		if stage.unlocks_memory_id:
@@ -104,12 +104,15 @@ func _load_resources(path: String, type: GDScript) -> Dictionary:
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
-		var full_path = path.path_join(file_name)
+		# Strip .remap if it exists (necessary for exported Godot builds)
+		var actual_file_name = file_name.trim_suffix(".remap")
+		var full_path = path.path_join(actual_file_name)
+		
 		if dir.current_is_dir():
 			if not file_name.begins_with("."): # Skip hidden directories
 				var sub_collection = _load_resources(full_path + "/", type)
 				collection.merge(sub_collection)
-		elif file_name.ends_with(".tres"):
+		elif actual_file_name.ends_with(".tres") or actual_file_name.ends_with(".res"):
 			var res = load(full_path)
 			if is_instance_of(res, type) and "id" in res:
 				collection[res.id] = res
