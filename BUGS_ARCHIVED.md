@@ -453,6 +453,65 @@ var full_path = path.path_join(actual_file_name)
 
 ---
 
+## Bug 9: Spawn UI Blocks Properties UI Button Input (FIXED)
+**Status:** ✅ FIXED
+
+### Symptoms
+- When Spawn UI is visible, the attack mode switching menu (Properties UI) buttons don't work
+- Close button and attack mode buttons (Stay, Follow, Attack Enemy, Attack Tower) are unclickable
+- TAB key also stops working to close Spawn UI when Properties UI is open
+
+### Root Cause
+**Layering conflict between CanvasLayer and 2D world nodes:**
+
+1. **SpawnUI** is a fullscreen Control on a `CanvasLayer` (UI layer) with `mouse_filter = STOP`
+2. **PropertiesUI** is a child of units in the 2D world (not on CanvasLayer)
+3. CanvasLayer nodes receive input **before** 2D world nodes, regardless of visual z-index
+4. SpawnUI's `mouse_filter = STOP` blocks ALL mouse events from reaching anything underneath
+
+**Why static scene settings couldn't fix it:**
+- Can't put both on same layer: PropertiesUI must follow units as they move
+- Can't leave SpawnUI as PASS/IGNORE: Then clicks would pass through to game world when clicking cards
+- Dynamic requirement: SpawnUI must block clicks when alone, allow clicks through when PropertiesUI is visible
+
+### Solution
+Modified `spawn_ui.gd` to dynamically change `mouse_filter` based on Properties UI visibility:
+
+```gdscript
+func _input(event: InputEvent) -> void:
+    # Check if any Properties UI is visible
+    var all_properties = get_tree().get_nodes_in_group("properties_ui")
+    var any_visible = false
+    for p in all_properties:
+        if p.visible:
+            any_visible = true
+            break
+    
+    # CRITICAL: Change mouse_filter to allow clicks through to Properties UI
+    # 0 = PASS, 1 = STOP (blocks everything), 2 = IGNORE
+    if any_visible:
+        mouse_filter = Control.MOUSE_FILTER_IGNORE  # Let clicks pass through
+    else:
+        mouse_filter = Control.MOUSE_FILTER_STOP   # Normal blocking behavior
+    
+    if any_visible:
+        return
+    
+    # ... rest of input handling
+```
+
+Additionally, Properties UI must be in the "properties_ui" group:
+- Added `add_to_group("properties_ui")` in `properties_ui.gd` `_ready()`
+- Scene file has `groups = ["properties_ui"]` for pre-instantiated units
+
+**Files Changed:**
+- `other_scripts/spawn_ui.gd` - Dynamic mouse_filter switching based on Properties UI visibility
+- `important_scripts/ui/properties_ui.gd` - Added `add_to_group("properties_ui")` in `_ready()`
+- `scenes/ui/properties_ui.tscn` - Added `groups = ["properties_ui"]` to node definition
+- `scenes/spawn_ui.tscn` - Added comment documenting mouse_filter behavior
+
+---
+
 ## Related Documentation
 - [`README.md`](README.md) - Project architecture and core systems
 - [`RESOURCES.md`](RESOURCES.md) - Complete inventory of stages, memories, skills, and cutscenes

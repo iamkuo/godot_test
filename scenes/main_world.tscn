@@ -716,7 +716,7 @@ tile_set = SubResource("TileSet_gee14")
 
 [node name="Test" parent="Map/Cutscenes" instance=ExtResource("12_avgj4")]
 position = Vector2(184, 56)
-script_id = "test"
+script_id = "human_capital"
 
 [node name="Signs" type="Node2D" parent="Map"]
 
